@@ -1,19 +1,15 @@
-"use client";   
-import { useEffect, useState } from "react";
+"use client";
 import { motion } from "framer-motion";
+import { useTheme } from "next-themes";
 
 const ThemeToggle = () => {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const { resolvedTheme } = useTheme();
 
-  useEffect(() => {
-    const darkModeMediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-    setIsDarkMode(darkModeMediaQuery.matches);
-
-    const handleChange = (e: MediaQueryListEvent) => setIsDarkMode(e.matches);
-    darkModeMediaQuery.addEventListener("change", handleChange);
-
-    return () => darkModeMediaQuery.removeEventListener("change", handleChange);
-  }, []);
+  // Aplica filtros solo en modo CLARO para forzar el logo blanco a verse negro
+  const filterStyle =
+    resolvedTheme === "light"
+      ? "invert(1) brightness(0) contrast(1000%)"
+      : "none"; // en dark, la imagen ya es blanca y está perfecta
 
   return (
     <motion.div
@@ -27,8 +23,11 @@ const ThemeToggle = () => {
         alt="Theme Icon"
         width={420}
         height={420}
-        className={`transition-transform duration-500 hover:scale-110 ${isDarkMode ? 'brightness-0 invert' : ''}`}
-        style={{ pointerEvents: "none" }}
+        style={{
+          pointerEvents: "none",
+          filter: filterStyle,
+          transition: "filter 0.5s ease",
+        }}
       />
     </motion.div>
   );
