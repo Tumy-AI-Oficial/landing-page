@@ -1,15 +1,22 @@
 "use client";
 import { motion } from "framer-motion";
 import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
 
 const ThemeToggle = () => {
   const { resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
 
-  // Aplica filtros solo en modo CLARO para forzar el logo blanco a verse negro
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) return null;
+
   const filterStyle =
     resolvedTheme === "light"
       ? "invert(1) brightness(0) contrast(1000%)"
-      : "none"; // en dark, la imagen ya es blanca y está perfecta
+      : "none";
 
   return (
     <motion.div
