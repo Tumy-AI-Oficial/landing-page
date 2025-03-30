@@ -7,17 +7,17 @@ export default function Team() {
     {
       name: "Adrian Auqui Perez",
       role: "Ingeniero de Software",
-      imageUrl: "./logos/adrian.jpeg",
+      imageUrl: "./logos/adrian.png",
     },
     {
       name: "Ronal Condor Blas",
       role: "Ingeniero de Software",
-      imageUrl: "./logos/adrian.jpeg",
+      imageUrl: "./logos/ronald.png",
     },
     {
       name: "Fabrizzio Vilchez",
       role: "Ingeniero de Software",
-      imageUrl: "./logos/adrian.jpeg",
+      imageUrl: "./logos/fabrizzio.png",
     },
   ];
 
