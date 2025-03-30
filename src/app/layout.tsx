@@ -10,6 +10,9 @@ import Footer from "@/components/Footer/Footer";
 export const metadata: Metadata = {
   title: "Tumy.ai",
   description: "Tumy.ai - Soluciones basadas en IA para empresas",
+  icons: {
+    icon: "/logos/icon.ico",
+  },
 };
 
 export default function RootLayout({
