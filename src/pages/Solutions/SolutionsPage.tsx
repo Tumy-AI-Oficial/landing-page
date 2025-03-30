@@ -68,14 +68,14 @@ export default function SolutionsPage() {
     return (
         <div className="flex flex-col w-full min-h-screen text-center py-8 md:py-16 gap-8 md:px-16">
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold">
-                Soluciones inteligentes para personas, negocios y empresas
+                Soluciones inteligentes para todos
             </h1>
             <p className="text-lg max-w-4xl mx-auto">
                 Te ayudamos a crear soluciones personalizadas utilizando las últimas tecnologías en desarrollo, inteligencia artificial y diseño digital. Llevamos tus ideas al siguiente nivel.
             </p>
 
             <h2 className="font-bold text-xl md:text-2xl lg:text-3xl mt-8 text-left">
-                Puedes optar por las siguientes soluciones:
+                Nuestros servicios:
             </h2>
 
             <div className="flex flex-wrap justify-center items-center gap-32 mt-8">
