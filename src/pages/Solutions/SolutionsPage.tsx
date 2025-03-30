@@ -95,7 +95,7 @@ export default function SolutionsPage() {
                         showTooltip={true}
                         displayOverlayContent={true}
                         overlayContent={
-                            <div className="flex flex-col justify-center items-center h-full w-full px-4 py-6 gap-3 bg-black/80 backdrop-blur-md rounded-2xl text-white text-center">
+                            <div className="flex flex-col justify-center items-center h-full w-full px-4 py-6 gap-3 bg-black/85 backdrop-blur-md rounded-2xl text-white text-center">
                                 <div className="flex items-center gap-2 text-lg font-semibold mb-2">
                                     <HiOutlineSparkles className="text-white dark:text-white" />
                                     {service.title}
