@@ -174,7 +174,7 @@ export default function ContactPage() {
                                 >
                                     <div className="flex flex-col items-center space-y-4">
                                         {/* Changed icon color to white */}
-                                        <socialMedia.icon className="text-4xl text-white" />
+                                        <socialMedia.icon className="text-4xl text-black dark:text-white" />
                                         <p className="text-md font-medium text-center break-words overflow-hidden w-full">
                                             {socialMedia.username}
                                         </p>

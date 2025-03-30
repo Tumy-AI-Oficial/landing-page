@@ -55,7 +55,7 @@ const TechnologyItem = ({
 
 export default function Technologies() {
   return (
-    <div className="w-full py-8 sm:py-12 bg-gray-100 dark:bg-black transition-colors duration-300">
+    <div className="w-full py-8 sm:py-12 bg-gray-100 dark:bg-black">
       <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-6 sm:mb-8 text-gray-800 dark:text-white">
         <span className="font-bold">+Tecnologías</span>{" "}
         <span className="font-light">actuales</span>

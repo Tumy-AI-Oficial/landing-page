@@ -2,6 +2,7 @@
 import { motion } from "framer-motion";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 const ThemeToggle = () => {
   const { resolvedTheme } = useTheme();
@@ -25,8 +26,8 @@ const ThemeToggle = () => {
       transition={{ duration: 0.6, ease: "easeOut" }}
       className="hidden md:flex w-fit h-fit"
     >
-      <img
-        src="./logos/picture.png"
+      <Image
+        src="/logos/picture.png"
         alt="Theme Icon"
         width={420}
         height={420}

@@ -81,7 +81,7 @@ export default function AsciiLogo({
             <pre
                 onMouseEnter={() => setHover(true)}
                 onMouseLeave={() => setHover(false)}
-                className={`transition-all duration-300 ease-in-out font-mono leading-[0.65em] whitespace-pre select-none
+                className={`font-mono leading-[0.65em] whitespace-pre select-none
                                                                                                       ${hover ? "scale-[1.025] blur-[0.5px]" : ""}`}
                 style={{
                     fontSize: `${computedFontSize}px`,

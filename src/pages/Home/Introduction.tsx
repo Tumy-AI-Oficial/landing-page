@@ -1,4 +1,5 @@
-import { Spotlight } from "@/components/ui/Spotlight";
+"use client";
+
 import { Button } from "@/components/ui/button";
 import ThemeToggle from "../../components/AsciiLogo/Picture_Introduction";
 
@@ -16,11 +17,11 @@ export default function Introduction() {
             Soluciones basadas en IA para empresas
           </p>
           <div className="space-x-4">
-            <Button variant="default">Contactanos</Button>
+            <Button variant="default" onClick={() => alert("¡Hola!")}>Contactanos</Button>
             <Button variant="outline">Prueba Gratuita</Button>
           </div>
         </div>
-        
+
         {/* Imagen a la derecha */}
         <div className="w-full md:w-1/2 flex justify-center">
           <ThemeToggle />

@@ -1,28 +1,29 @@
 "use client";
 
 import { Card, CardHeader, CardContent } from "@/components/ui/card";
+import Image from "next/image";
 
 export default function Team() {
   const teamMembers = [
     {
       name: "Adrian Auqui Perez",
       role: "Ingeniero de Software",
-      imageUrl: "./logos/adrian.png",
+      imageUrl: "/logos/adrian.png",
     },
     {
       name: "Ronal Condor Blas",
       role: "Ingeniero de Software",
-      imageUrl: "./logos/ronald.png",
+      imageUrl: "/logos/ronald.png",
     },
     {
       name: "Fabrizzio Vilchez",
       role: "Ingeniero de Software",
-      imageUrl: "./logos/fabrizzio.png",
+      imageUrl: "/logos/fabrizzio.png",
     },
   ];
 
   return (
-    <div className="flex flex-col items-center justify-center w-full gap-6 py-20 px-4 md:px-16 bg-white text-black dark:bg-black dark:text-white transition-colors duration-500">
+    <div className="flex flex-col items-center justify-center w-full gap-6 py-20 px-4 md:px-16 bg-white text-black dark:bg-black dark:text-white">
       <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-12">
         <span className="font-bold">+Expertos</span>{" "}
         <span className="font-light">en nuestro grupo de desarrollo</span>
@@ -32,10 +33,12 @@ export default function Team() {
         {teamMembers.map((member, index) => (
           <Card
             key={index}
-            className="bg-gray-100 dark:bg-[#111] border border-gray-300 dark:border-neutral-800 text-black dark:text-white transition-all hover:scale-[1.03] hover:shadow-xl"
+            className="bg-gray-100 dark:bg-[#111] border border-gray-300 dark:border-neutral-800 text-black dark:text-white hover:scale-[1.03] hover:shadow-xl"
           >
             <CardHeader className="flex items-center justify-center p-4">
-              <img
+              <Image
+                width={200}
+                height={200}
                 src={member.imageUrl}
                 alt={member.name}
                 className="w-48 h-64 object-cover rounded-md"
