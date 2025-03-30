@@ -13,17 +13,17 @@ const services = [
             "Chatbots",
             "IA Personalizada"
         ],
-        img: "https://cdn.shopify.com/s/files/1/0229/0839/articles/chatbot_20vs_20conversational_20ai_1848x970_a8b2a64b-3f99-4a3a-a984-ae2055adf4d7.jpg?v=1732000433"
+        img: "https://sendbird.imgix.net/cms/Chatbot-UI_Ask-Redfin-bot.png"
     },
     {
         title: "Software de empresas",
         items: [
             "Gestion de Inventario",
             "Sistemas de Ventas",
-            "Sistemas de facturación",
+            "Sistemas de Facturación",
 
         ],
-        img: "https://cdn-www.stelorder.com/wp-content/uploads/2024/04/blog-que-es-una-empresa.png"
+        img: "https://www.diariosigloxxi.com/multimedia/images/img_c_6569b792a4288.jpg"
     },
     {
         title: "Desarrollo Web",
@@ -32,7 +32,7 @@ const services = [
             "Node.js / Python / .NET",
             "GoLang",
         ],
-        img: "https://agenciakavak.com/wp-content/uploads/2025/01/DISENO-Y-DESARROLLO-WEB.jpg"
+        img: "https://tramapublicidad.com/wp-content/uploads/2024/05/Web_GabiGarcia_p2.webp"
     },
     {
         title: "Desarrollo Móvil",
@@ -40,7 +40,7 @@ const services = [
             "iOS / Android",
             "React Native",
         ],
-        img: "https://www.canvia.com/wp-content/uploads/2023/03/banner-desarrollo-de-aplicaciones-moviles-1-1.jpg"
+        img: "https://weareshifta.com/wp-content/uploads/consistencia-UX-Writing.jpg"
     },
     {
         title: "Diseño de Producto",
@@ -50,7 +50,7 @@ const services = [
             "Prototipos & Wireframes",
             "Figma / Sketch / After Effects"
         ],
-        img: "https://cdn.plainconcepts.com/wp-content/uploads/2020/02/Dise%C3%B1o-UX-UI.jpg"
+        img: "https://assets.justinmind.com/wp-content/uploads/2018/06/justinmind-user-flow-sequence-diagram.png"
     },
     {
         title: "Aseguramiento de Calidad",
@@ -60,7 +60,7 @@ const services = [
             "Testing de API",
             "Pruebas de Rendimiento"
         ],
-        img: "https://testgrid.io/blog/wp-content/uploads/2024/03/Test-Environment-in-Software-Testing.jpg"
+        img: "https://www.atlascode.com/wp-content/uploads/2016/04/software-testing.jpg"
     }
 ];
 
