@@ -1,11 +1,11 @@
 import { cn } from "@/lib/utils";
 import { Marquee } from "@/components/magicui/marquee";
-import { 
-  SiNextdotjs, 
-  SiTailwindcss, 
-  SiAmazon, 
-  SiPython, 
-  SiServerless, 
+import {
+  SiNextdotjs,
+  SiTailwindcss,
+  SiAmazon,
+  SiPython,
+  SiServerless,
   SiMeta,
   SiReact,
   SiJavascript,
@@ -80,7 +80,7 @@ const TechnologyItem = ({ name, Icon }: { name: string, Icon: React.ComponentTyp
   );
 };
 
-export function Technologies() {
+export default function Technologies() {
   return (
     <div className="w-full py-12 bg-gray-100 dark:bg-black transition-colors duration-300">
       <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-8 text-gray-800 dark:text-white">
@@ -89,14 +89,14 @@ export function Technologies() {
           actuales
         </span>
       </h1>
-      <div className="container mx-auto">        
+      <div className="container mx-auto">
         <div className="relative flex w-full overflow-hidden">
           <Marquee pauseOnHover className="[--duration:30s]">
             {technologies.map((tech) => (
               <TechnologyItem key={tech.name} {...tech} />
             ))}
           </Marquee>
-          
+
           <div className="pointer-events-none absolute inset-y-0 left-0 w-1/12 bg-gradient-to-r from-gray-100 dark:from-black"></div>
           <div className="pointer-events-none absolute inset-y-0 right-0 w-1/12 bg-gradient-to-l from-gray-100 dark:from-black"></div>
         </div>
