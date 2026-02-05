@@ -2,10 +2,11 @@ import type { Metadata } from "next";
 import { ThemeProvider } from 'next-themes';
 import "./globals.css";
 import Navbar from "@/components/Navbar/Navbar";
-import { ibmPlexMono } from './fonts';
+import { ibmPlexMono, geistSans } from './fonts';
 import { Toaster } from "@/components/Toaster/Toaster";
 import { Spotlight } from "@/components/ui/Spotlight";
 import Footer from "@/components/Footer/Footer";
+import SmoothScroll from "@/components/SmoothScroll/SmoothScroll";
 
 export const metadata: Metadata = {
   title: "Tumy.ai | Soluciones de Inteligencia Artificial para Empresas",
@@ -36,7 +37,6 @@ export const metadata: Metadata = {
     icon: "/logos/icon.ico",
     shortcut: "/logos/icon.ico",
   },
-  //manifest: "/site.webmanifest",
 };
 
 export default function RootLayout({
@@ -45,14 +45,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" suppressHydrationWarning className={`${ibmPlexMono.variable}`}>
+    <html lang="es" suppressHydrationWarning className={`${geistSans.variable} ${ibmPlexMono.variable}`}>
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="theme-color" content="#ffffff" />
         <link rel="canonical" href="https://tumy.ai" />
       </head>
-      <body className="min-h-screen flex flex-col min-w-[400px] max-w-[1920px] mx-auto px-8 font-ibm">
+      <body className="min-h-screen flex flex-col min-w-[400px] max-w-[1920px] mx-auto font-sans antialiased">
         <ThemeProvider attribute="class">
+          <SmoothScroll />
           <Spotlight
             className="-top-40 left-0 md:-top-20 md:left-60"
             fill="white"

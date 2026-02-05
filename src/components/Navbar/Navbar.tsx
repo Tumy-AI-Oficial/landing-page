@@ -5,7 +5,7 @@ import { useTheme } from 'next-themes';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FaMoon, FaSun, FaBars, FaX } from "react-icons/fa6";
-import GradientText from '../GradientText/GradientText';
+import { Button } from '../ui/button';
 
 interface NavbarItem {
     title: string;
@@ -29,7 +29,6 @@ export default function Navbar() {
         setMounted(true);
     }, []);
 
-    // Detectar scroll para cambiar apariencia del navbar
     useEffect(() => {
         const handleScroll = () => {
             const isScrolled = window.scrollY > 10;
@@ -39,8 +38,6 @@ export default function Navbar() {
         };
 
         window.addEventListener('scroll', handleScroll);
-
-        // Verificar posición inicial
         handleScroll();
 
         return () => {
@@ -48,7 +45,6 @@ export default function Navbar() {
         };
     }, [scrolled]);
 
-    // Prevenir el scroll cuando el menú está abierto
     useEffect(() => {
         if (menuOpen) {
             document.body.style.overflow = 'hidden';
@@ -61,7 +57,6 @@ export default function Navbar() {
         };
     }, [menuOpen]);
 
-    // Cerrar el menú cuando la pantalla se redimensiona a un tamaño donde se muestra la navegación de escritorio
     useEffect(() => {
         const handleResize = () => {
             if (window.innerWidth >= 768 && menuOpen) {
@@ -81,54 +76,48 @@ export default function Navbar() {
 
     return (
         <>
-            {/* Overlay de pantalla completa con animación */}
+            {/* Mobile overlay */}
             <div
-                className={`z-200 fixed inset-0 bg-black/70 backdrop-blur-md md:hidden transition-all duration-300 ${menuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
-                    }`}
+                className={`z-200 fixed inset-0 bg-black/80 backdrop-blur-xl md:hidden transition-all duration-300 ${menuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
             >
-                <div className={`flex flex-col h-full p-6 transition-transform duration-300 ${menuOpen ? 'translate-x-0' : '-translate-x-full'
-                    }`}>
+                <div className={`flex flex-col h-full p-8 transition-transform duration-300 ${menuOpen ? 'translate-x-0' : '-translate-x-full'}`}>
                     <div className="flex justify-end">
                         <button
                             className="p-2 text-white"
                             onClick={() => setMenuOpen(false)}
                             aria-label="Cerrar menú"
                         >
-                            <FaX className="text-xl" />
+                            <FaX className="text-lg" />
                         </button>
                     </div>
-                    <ul className="flex flex-col space-y-8 mt-12">
+                    <ul className="flex flex-col space-y-6 mt-16">
                         {navbarItems.map((item, index) => (
                             <li
                                 key={index}
-                                className={`transform transition-all duration-300 delay-${index * 100} ${menuOpen ? 'translate-x-0 opacity-100' : '-translate-x-8 opacity-0'
-                                    }`}
+                                className={`transform transition-all duration-300 ${menuOpen ? 'translate-x-0 opacity-100' : '-translate-x-8 opacity-0'}`}
+                                style={{ transitionDelay: `${index * 75}ms` }}
                             >
                                 <Link
                                     href={item.href}
-                                    className="text-2xl font-bold text-white hover:text-gray-300 transition-colors"
+                                    className="text-2xl font-medium text-white hover:text-gray-300 transition-colors tracking-tight"
                                     onClick={() => setMenuOpen(false)}
                                 >
                                     {item.title}
                                 </Link>
                             </li>
                         ))}
-                        {/* Opción de cambiar tema en el menú móvil como una opción más */}
-                        <li className={`transform transition-all duration-300 delay-400 ${menuOpen ? 'translate-x-0 opacity-100' : '-translate-x-8 opacity-0'}`}>
+                        <li
+                            className={`transform transition-all duration-300 ${menuOpen ? 'translate-x-0 opacity-100' : '-translate-x-8 opacity-0'}`}
+                            style={{ transitionDelay: `${navbarItems.length * 75}ms` }}
+                        >
                             <button
-                                className="text-2xl font-bold text-white hover:text-gray-300 transition-colors flex items-center gap-2"
+                                className="text-lg text-white/70 hover:text-white transition-colors flex items-center gap-2"
                                 onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
                             >
                                 {resolvedTheme === 'dark' ? (
-                                    <>
-                                        <FaSun className="text-xl" />
-                                        <span>Modo claro</span>
-                                    </>
+                                    <><FaSun className="text-base" /><span>Modo claro</span></>
                                 ) : (
-                                    <>
-                                        <FaMoon className="text-xl" />
-                                        <span>Modo oscuro</span>
-                                    </>
+                                    <><FaMoon className="text-base" /><span>Modo oscuro</span></>
                                 )}
                             </button>
                         </li>
@@ -136,81 +125,72 @@ export default function Navbar() {
                 </div>
             </div>
 
-            {/* Barra de navegación fixed con efecto de blur al hacer scroll */}
+            {/* Navbar */}
             <nav
-                className={`fixed top-0 left-0 right-0 flex items-center justify-between w-full z-100 py-4 px-4 md:px-6 lg:px-8 select-none transition-all duration-300 ${scrolled
-                    ? `${resolvedTheme === 'dark'
-                        ? 'bg-black/50 backdrop-blur-lg shadow-md'
-                        : 'bg-white/50 backdrop-blur-lg shadow-md'}`
+                className={`fixed top-0 left-0 right-0 flex items-center justify-between w-full z-100 py-3 px-6 md:px-8 lg:px-12 select-none transition-all duration-500 ${scrolled
+                    ? 'bg-white/70 dark:bg-black/70 backdrop-blur-xl border-b border-gray-200/50 dark:border-gray-800/50'
                     : 'bg-transparent'
                     }`}
             >
-                <Link className='flex items-center gap-2' href={"/"}>
+                <Link className='flex items-center gap-2.5' href="/">
                     <Image
                         src="/logos/logo.webp"
                         alt="Logo"
-                        width={50}
-                        height={50}
-                        className={`${resolvedTheme === 'dark' ? 'invert' : ''}`}
+                        width={32}
+                        height={32}
+                        className={resolvedTheme === 'dark' ? 'invert' : ''}
                     />
-                    <h2 className="text-xl font-bold">Tumy.ai</h2>
+                    <span className="text-base font-semibold tracking-tight">Tumy.ai</span>
                 </Link>
-                <ul className="hidden md:flex space-x-4 lg:space-x-6">
+
+                <ul className="hidden md:flex items-center gap-8">
                     {navbarItems.map((item, index) => (
                         <li key={index}>
-                            <Link href={item.href} className="text-md hover:text-gray-400 transition-colors font-bold">
+                            <Link
+                                href={item.href}
+                                className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-200"
+                            >
                                 {item.title}
                             </Link>
                         </li>
                     ))}
                 </ul>
-                <div className="md:hidden flex items-center gap-2">
-                    {/* Solo botón de contacto y menú en la barra de navegación móvil */}
-                    <Link href="/contact">
-                        <GradientText
-                            colors={["#03dd00", "#00d7ce", "#03dd00"]}
-                            animationSpeed={8}
-                            showBorder={true}
-                            className="p-2"
-                        >
-                            Contáctanos
-                        </GradientText>
-                    </Link>
 
+                <div className="md:hidden flex items-center gap-3">
+                    <Link href="/contact">
+                        <Button variant="default" size="sm">
+                            Contacto
+                        </Button>
+                    </Link>
                     <button
-                        className="p-2 z-50 relative transition-transform duration-300"
+                        className="p-1.5 z-50 relative"
                         onClick={() => setMenuOpen(!menuOpen)}
                         aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
                     >
-                        <FaBars className='text-xl transition-transform duration-300' />
+                        <FaBars className='text-lg' />
                     </button>
                 </div>
-                <div className='hidden md:flex flex-row w-fit gap-2'>
-                    <Link href="/contact">
-                        <GradientText
-                            colors={["#03dd00", "#00d7ce", "#03dd00"]}
-                            animationSpeed={8}
-                            showBorder={true}
-                            className="p-2"
-                        >
-                            Contáctanos
-                        </GradientText>
-                    </Link>
+
+                <div className='hidden md:flex items-center gap-3'>
                     <button
-                        className={`rounded-full transition duration-300 px-2 ease-in-out ${resolvedTheme === 'dark' ? 'text-gray-200 hover:bg-gray-900' : 'text-black hover:bg-gray-300'}`}
+                        className="p-2 rounded-lg text-gray-500 hover:text-black dark:hover:text-white transition-colors duration-200"
                         onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
                     >
                         {resolvedTheme === 'dark' ? (
-                            <FaSun className="text-xl" />
+                            <FaSun className="text-sm" />
                         ) : (
-                            <FaMoon className="text-xl" />
+                            <FaMoon className="text-sm" />
                         )}
                     </button>
+                    <Link href="/contact">
+                        <Button variant="default" size="sm">
+                            Contáctanos
+                        </Button>
+                    </Link>
                 </div>
             </nav>
 
-            {/* Div espaciador para compensar el navbar fixed */}
-            <div className="h-20"></div>
+            <div className="h-16"></div>
         </>
     );
 }

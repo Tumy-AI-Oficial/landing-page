@@ -1,4 +1,7 @@
 import localFont from 'next/font/local';
+import { GeistSans } from 'geist/font/sans';
+
+export const geistSans = GeistSans;
 
 export const ibmPlexMono = localFont({
     variable: '--font-ibm-plex-mono',

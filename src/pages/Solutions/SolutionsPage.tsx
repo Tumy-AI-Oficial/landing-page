@@ -1,118 +1,187 @@
 "use client";
-import TiltedCard from "@/components/TiltedCard/TiltedCard";
-import { HiOutlineSparkles } from "react-icons/hi";
-import { FaRegCircle } from "react-icons/fa";
+
+import { motion } from "framer-motion";
+import {
+  Brain,
+  Code2,
+  Smartphone,
+  Palette,
+  ShieldCheck,
+  Server,
+} from "lucide-react";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 const services = [
-    {
-        title: "Inteligencia",
-        items: [
-            "IA Generativa",
-            "LLM & NLM",
-            "Machine Learning",
-            "Chatbots",
-            "IA Personalizada"
-        ],
-        img: "https://sendbird.imgix.net/cms/Chatbot-UI_Ask-Redfin-bot.png"
-    },
-    {
-        title: "Software de empresas",
-        items: [
-            "Gestion de Inventario",
-            "Sistemas de Ventas",
-            "Sistemas de Facturación",
-
-        ],
-        img: "https://www.diariosigloxxi.com/multimedia/images/img_c_6569b792a4288.jpg"
-    },
-    {
-        title: "Desarrollo Web",
-        items: [
-            "React / Vue / Angular",
-            "Node.js / Python / .NET",
-            "GoLang",
-        ],
-        img: "https://tramapublicidad.com/wp-content/uploads/2024/05/Web_GabiGarcia_p2.webp"
-    },
-    {
-        title: "Desarrollo Móvil",
-        items: [
-            "iOS / Android",
-            "React Native",
-        ],
-        img: "https://weareshifta.com/wp-content/uploads/consistencia-UX-Writing.jpg"
-    },
-    {
-        title: "Diseño de Producto",
-        items: [
-            "Diseño UI/UX",
-            "Sistemas de diseño",
-            "Prototipos & Wireframes",
-            "Figma / Sketch / After Effects"
-        ],
-        img: "https://assets.justinmind.com/wp-content/uploads/2018/06/justinmind-user-flow-sequence-diagram.png"
-    },
-    {
-        title: "Aseguramiento de Calidad",
-        items: [
-            "QA Automatizado",
-            "Pruebas Manuales",
-            "Testing de API",
-            "Pruebas de Rendimiento"
-        ],
-        img: "https://www.atlascode.com/wp-content/uploads/2016/04/software-testing.jpg"
-    }
+  {
+    icon: Brain,
+    title: "Inteligencia Artificial",
+    description:
+      "Implementamos soluciones de IA que transforman datos en decisiones inteligentes para tu negocio.",
+    items: [
+      "IA Generativa",
+      "LLM & NLM",
+      "Machine Learning",
+      "Chatbots",
+      "IA Personalizada",
+    ],
+  },
+  {
+    icon: Server,
+    title: "Software Empresarial",
+    description:
+      "Sistemas robustos diseñados para optimizar las operaciones de tu empresa.",
+    items: [
+      "Gestión de Inventario",
+      "Sistemas de Ventas",
+      "Sistemas de Facturación",
+    ],
+  },
+  {
+    icon: Code2,
+    title: "Desarrollo Web",
+    description:
+      "Aplicaciones web modernas, rápidas y escalables con las mejores tecnologías.",
+    items: ["React / Vue / Angular", "Node.js / Python / .NET", "GoLang"],
+  },
+  {
+    icon: Smartphone,
+    title: "Desarrollo Móvil",
+    description:
+      "Apps nativas y multiplataforma con experiencias de usuario excepcionales.",
+    items: ["iOS / Android", "React Native", "Flutter"],
+  },
+  {
+    icon: Palette,
+    title: "Diseño de Producto",
+    description:
+      "Diseño centrado en el usuario que convierte ideas en productos intuitivos.",
+    items: [
+      "Diseño UI/UX",
+      "Sistemas de diseño",
+      "Prototipos & Wireframes",
+    ],
+  },
+  {
+    icon: ShieldCheck,
+    title: "Aseguramiento de Calidad",
+    description:
+      "Garantizamos la calidad de cada línea de código y cada interacción.",
+    items: [
+      "QA Automatizado",
+      "Pruebas Manuales",
+      "Testing de API",
+      "Pruebas de Rendimiento",
+    ],
+  },
 ];
 
 export default function SolutionsPage() {
-    return (
-        <div className="flex flex-col w-full min-h-screen text-center py-8 md:py-16 gap-8 md:px-16">
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold">
-                Soluciones inteligentes para todos
-            </h1>
-            <p className="text-lg max-w-4xl mx-auto">
-                Te ayudamos a crear soluciones personalizadas utilizando las últimas tecnologías en desarrollo, inteligencia artificial y diseño digital. Llevamos tus ideas al siguiente nivel.
-            </p>
-
-            <h2 className="font-bold text-xl md:text-2xl lg:text-3xl mt-8 text-left">
-                Nuestros servicios:
-            </h2>
-
-            <div className="flex flex-wrap justify-center items-center gap-32 mt-8">
-                {services.map((service, index) => (
-                    <TiltedCard
-                        key={index}
-                        imageSrc={service.img}
-                        altText={service.title}
-                        captionText={service.title}
-                        containerHeight="350px"
-                        containerWidth="350px"
-                        imageHeight="350px"
-                        imageWidth="350px"
-                        rotateAmplitude={12}
-                        scaleOnHover={1.2}
-                        showMobileWarning={false}
-                        showTooltip={true}
-                        displayOverlayContent={true}
-                        overlayContent={
-                            <div className="flex flex-col justify-center items-center h-full w-full px-4 py-6 gap-3 bg-black/85 backdrop-blur-md rounded-2xl text-white text-center">
-                                <div className="flex items-center gap-2 text-lg font-semibold mb-2">
-                                    <HiOutlineSparkles className="text-white dark:text-white" />
-                                    {service.title}
-                                </div>
-                                <ul className="space-y-1 text-sm text-white/90 w-full text-left">
-                                    {service.items.map((item, i) => (
-                                        <li key={i} className="flex items-center gap-2">
-                                            <FaRegCircle className="text-xs opacity-60" />
-                                            {item}
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-                        }
-                    />
-                ))}
-            </div>
+  return (
+    <div className="w-full min-h-screen">
+      {/* Hero */}
+      <section className="py-20 md:py-28 px-6 md:px-16 lg:px-24">
+        <div className="max-w-4xl mx-auto text-center">
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}
+            className="text-sm font-medium tracking-widest uppercase text-gray-500 dark:text-gray-400 mb-4 font-mono"
+          >
+            Nuestras soluciones
+          </motion.p>
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6"
+          >
+            Soluciones inteligentes{" "}
+            <span className="font-light">para todos</span>
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed max-w-2xl mx-auto"
+          >
+            Te ayudamos a crear soluciones personalizadas utilizando las últimas
+            tecnologías en desarrollo, inteligencia artificial y diseño digital.
+          </motion.p>
         </div>
-    );
+      </section>
+
+      {/* Services grid */}
+      <section className="pb-24 px-6 md:px-16 lg:px-24">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {services.map((service, index) => {
+            const Icon = service.icon;
+            return (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{
+                  duration: 0.5,
+                  delay: index * 0.08,
+                  ease: "easeOut",
+                }}
+                viewport={{ once: true, margin: "-50px" }}
+                className="group relative p-8 rounded-xl border border-gray-200 dark:border-gray-800 hover:border-gray-300 dark:hover:border-gray-700 transition-all duration-300 hover:-translate-y-1"
+              >
+                {/* Icon */}
+                <div className="w-10 h-10 rounded-lg bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 flex items-center justify-center mb-6 group-hover:bg-gray-200 dark:group-hover:bg-white/10 transition-colors duration-300">
+                  <Icon className="w-5 h-5 text-gray-600 dark:text-gray-300" />
+                </div>
+
+                {/* Title & desc */}
+                <h3 className="text-lg font-semibold tracking-tight mb-2">
+                  {service.title}
+                </h3>
+                <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed mb-5">
+                  {service.description}
+                </p>
+
+                {/* Items */}
+                <ul className="space-y-2">
+                  {service.items.map((item, i) => (
+                    <li
+                      key={i}
+                      className="flex items-center gap-2.5 text-sm text-gray-600 dark:text-gray-400"
+                    >
+                      <span className="w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 shrink-0" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+            );
+          })}
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-20 px-6 md:px-16 lg:px-24 border-t border-gray-100 dark:border-gray-900">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="max-w-2xl mx-auto text-center"
+        >
+          <h2 className="text-2xl md:text-3xl font-bold tracking-tight mb-4">
+            ¿Listo para empezar?
+          </h2>
+          <p className="text-gray-500 dark:text-gray-400 mb-8">
+            Cuéntanos tu idea y te ayudamos a hacerla realidad.
+          </p>
+          <Link href="/contact">
+            <Button variant="default" size="lg" className="px-10">
+              Contáctanos
+            </Button>
+          </Link>
+        </motion.div>
+      </section>
+    </div>
+  );
 }
