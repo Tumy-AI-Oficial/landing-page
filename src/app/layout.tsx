@@ -24,14 +24,11 @@ export const metadata: Metadata = {
     siteName: "Tumy.ai",
     title: "Tumy.ai | Soluciones de Inteligencia Artificial para Empresas",
     description: "Soluciones basadas en IA para automatizar procesos, aumentar la eficiencia y transformar digitalmente tu empresa.",
-    images: [
-      {
-        url: "/logos/logo.webp",
-        width: 1200,
-        height: 630,
-        alt: "Tumy.ai - Soluciones IA",
-      },
-    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Tumy.ai | Soluciones de Inteligencia Artificial para Empresas",
+    description: "Soluciones basadas en IA para automatizar procesos, aumentar la eficiencia y transformar digitalmente tu empresa.",
   },
   icons: {
     icon: "/logos/icon.ico",
