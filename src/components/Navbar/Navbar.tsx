@@ -13,9 +13,9 @@ interface NavbarItem {
 }
 
 const navbarItems: NavbarItem[] = [
+    { title: 'Inicio', href: '/' },
     { title: 'Productos', href: '/products' },
     { title: 'Soluciones', href: '/solutions' },
-    { title: 'Recursos', href: '/resources' },
     { title: 'Nosotros', href: '/about' },
 ];
 
@@ -83,7 +83,7 @@ export default function Navbar() {
                 <div className={`flex flex-col h-full p-8 transition-transform duration-300 ${menuOpen ? 'translate-x-0' : '-translate-x-full'}`}>
                     <div className="flex justify-end">
                         <button
-                            className="p-2 text-white"
+                            className="p-2 text-white cursor-pointer"
                             onClick={() => setMenuOpen(false)}
                             aria-label="Cerrar menú"
                         >
@@ -99,7 +99,7 @@ export default function Navbar() {
                             >
                                 <Link
                                     href={item.href}
-                                    className="text-2xl font-medium text-white hover:text-gray-300 transition-colors tracking-tight"
+                                    className="text-2xl font-medium text-white hover:text-neutral-300 transition-colors tracking-tight"
                                     onClick={() => setMenuOpen(false)}
                                 >
                                     {item.title}
@@ -111,7 +111,7 @@ export default function Navbar() {
                             style={{ transitionDelay: `${navbarItems.length * 75}ms` }}
                         >
                             <button
-                                className="text-lg text-white/70 hover:text-white transition-colors flex items-center gap-2"
+                                className="text-lg text-white/70 hover:text-white transition-colors flex items-center gap-2 cursor-pointer"
                                 onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
                             >
                                 {resolvedTheme === 'dark' ? (
@@ -128,11 +128,11 @@ export default function Navbar() {
             {/* Navbar */}
             <nav
                 className={`fixed top-0 left-0 right-0 flex items-center justify-between w-full z-100 py-3 px-6 md:px-8 lg:px-12 select-none transition-all duration-500 ${scrolled
-                    ? 'bg-white/70 dark:bg-black/70 backdrop-blur-xl border-b border-gray-200/50 dark:border-gray-800/50'
+                    ? 'bg-white/70 dark:bg-black/70 backdrop-blur-xl border-b border-neutral-200/50 dark:border-neutral-800/50'
                     : 'bg-transparent'
                     }`}
             >
-                <Link className='flex items-center gap-2.5' href="/">
+                <Link className='flex items-center gap-2.5 cursor-pointer' href="/">
                     <Image
                         src="/logos/logo.webp"
                         alt="Logo"
@@ -148,7 +148,7 @@ export default function Navbar() {
                         <li key={index}>
                             <Link
                                 href={item.href}
-                                className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-200"
+                                className="text-sm text-neutral-500 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-colors duration-200"
                             >
                                 {item.title}
                             </Link>
@@ -158,12 +158,12 @@ export default function Navbar() {
 
                 <div className="md:hidden flex items-center gap-3">
                     <Link href="/contact">
-                        <Button variant="default" size="sm">
+                        <Button variant="default" size="sm" className="cursor-pointer">
                             Contacto
                         </Button>
                     </Link>
                     <button
-                        className="p-1.5 z-50 relative"
+                        className="p-1.5 z-50 relative cursor-pointer"
                         onClick={() => setMenuOpen(!menuOpen)}
                         aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
                     >
@@ -173,7 +173,7 @@ export default function Navbar() {
 
                 <div className='hidden md:flex items-center gap-3'>
                     <button
-                        className="p-2 rounded-lg text-gray-500 hover:text-black dark:hover:text-white transition-colors duration-200"
+                        className="p-2 rounded-lg text-neutral-400 hover:text-black dark:hover:text-white transition-colors duration-200 cursor-pointer"
                         onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
                     >
                         {resolvedTheme === 'dark' ? (
@@ -183,7 +183,7 @@ export default function Navbar() {
                         )}
                     </button>
                     <Link href="/contact">
-                        <Button variant="default" size="sm">
+                        <Button variant="default" size="sm" className="cursor-pointer">
                             Contáctanos
                         </Button>
                     </Link>

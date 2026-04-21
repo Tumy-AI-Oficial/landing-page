@@ -1,186 +1,126 @@
 "use client";
 
-import { motion } from "framer-motion";
-import {
-  Brain,
-  Code2,
-  Smartphone,
-  Palette,
-  ShieldCheck,
-  Server,
-} from "lucide-react";
+import Image from "next/image";
+import { BlurFade } from "@/components/ui/blur-fade";
+import { MagicCard } from "@/components/ui/magic-card";
+import { ShimmerButton } from "@/components/ui/shimmer-button";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
 
 const services = [
   {
-    icon: Brain,
+    icon3d: "/icons3d/brain.webp",
     title: "Inteligencia Artificial",
-    description:
-      "Implementamos soluciones de IA que transforman datos en decisiones inteligentes para tu negocio.",
-    items: [
-      "IA Generativa",
-      "LLM & NLM",
-      "Machine Learning",
-      "Chatbots",
-      "IA Personalizada",
-    ],
+    description: "Soluciones de IA que transforman datos en decisiones inteligentes.",
+    items: ["IA Generativa", "LLM & NLM", "Machine Learning", "Chatbots", "IA Personalizada"],
   },
   {
-    icon: Server,
+    icon3d: "/icons3d/server.webp",
     title: "Software Empresarial",
-    description:
-      "Sistemas robustos diseñados para optimizar las operaciones de tu empresa.",
-    items: [
-      "Gestión de Inventario",
-      "Sistemas de Ventas",
-      "Sistemas de Facturación",
-    ],
+    description: "Sistemas robustos para optimizar operaciones.",
+    items: ["Gestión de Inventario", "Sistemas de Ventas", "Sistemas de Facturación"],
   },
   {
-    icon: Code2,
+    icon3d: "/icons3d/code.webp",
     title: "Desarrollo Web",
-    description:
-      "Aplicaciones web modernas, rápidas y escalables con las mejores tecnologías.",
+    description: "Aplicaciones web modernas, rápidas y escalables.",
     items: ["React / Vue / Angular", "Node.js / Python / .NET", "GoLang"],
   },
   {
-    icon: Smartphone,
+    icon3d: "/icons3d/mobile.webp",
     title: "Desarrollo Móvil",
-    description:
-      "Apps nativas y multiplataforma con experiencias de usuario excepcionales.",
+    description: "Apps nativas y multiplataforma excepcionales.",
     items: ["iOS / Android", "React Native", "Flutter"],
   },
   {
-    icon: Palette,
+    icon3d: "/icons3d/palette.webp",
     title: "Diseño de Producto",
-    description:
-      "Diseño centrado en el usuario que convierte ideas en productos intuitivos.",
-    items: [
-      "Diseño UI/UX",
-      "Sistemas de diseño",
-      "Prototipos & Wireframes",
-    ],
+    description: "Diseño centrado en el usuario que convierte.",
+    items: ["Diseño UI/UX", "Sistemas de diseño", "Prototipos & Wireframes"],
   },
   {
-    icon: ShieldCheck,
+    icon3d: "/icons3d/shield.webp",
     title: "Aseguramiento de Calidad",
-    description:
-      "Garantizamos la calidad de cada línea de código y cada interacción.",
-    items: [
-      "QA Automatizado",
-      "Pruebas Manuales",
-      "Testing de API",
-      "Pruebas de Rendimiento",
-    ],
+    description: "Garantizamos calidad en cada línea de código.",
+    items: ["QA Automatizado", "Pruebas Manuales", "Testing de API", "Pruebas de Rendimiento"],
   },
 ];
 
 export default function SolutionsPage() {
   return (
     <div className="w-full min-h-screen">
-      {/* Hero */}
       <section className="py-20 md:py-28 px-6 md:px-16 lg:px-24">
         <div className="max-w-4xl mx-auto text-center">
-          <motion.p
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4 }}
-            className="text-sm font-medium tracking-widest uppercase text-gray-500 dark:text-gray-400 mb-4 font-mono"
-          >
-            Nuestras soluciones
-          </motion.p>
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6"
-          >
-            Soluciones inteligentes{" "}
-            <span className="font-light">para todos</span>
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed max-w-2xl mx-auto"
-          >
-            Te ayudamos a crear soluciones personalizadas utilizando las últimas
-            tecnologías en desarrollo, inteligencia artificial y diseño digital.
-          </motion.p>
+          <BlurFade delay={0.1} inView>
+            <p className="text-xs font-medium tracking-[0.2em] uppercase text-neutral-400 mb-4 font-mono">
+              Soluciones
+            </p>
+          </BlurFade>
+          <BlurFade delay={0.2} inView>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6">
+              Soluciones inteligentes{" "}
+              <span className="font-light">para todos</span>
+            </h1>
+          </BlurFade>
+          <BlurFade delay={0.3} inView>
+            <p className="text-lg text-neutral-500 dark:text-neutral-400 leading-relaxed max-w-2xl mx-auto">
+              Creamos soluciones personalizadas con las últimas tecnologías en desarrollo, IA y diseño digital.
+            </p>
+          </BlurFade>
         </div>
       </section>
 
-      {/* Services grid */}
       <section className="pb-24 px-6 md:px-16 lg:px-24">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {services.map((service, index) => {
-            const Icon = service.icon;
-            return (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{
-                  duration: 0.5,
-                  delay: index * 0.08,
-                  ease: "easeOut",
-                }}
-                viewport={{ once: true, margin: "-50px" }}
-                className="group relative p-8 rounded-xl border border-gray-200 dark:border-gray-800 hover:border-gray-300 dark:hover:border-gray-700 transition-all duration-300 hover:-translate-y-1"
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {services.map((service, index) => (
+            <BlurFade key={index} delay={0.1 + index * 0.08} inView>
+              <MagicCard
+                className="h-full rounded-xl cursor-pointer"
+                gradientFrom="#ffffff"
+                gradientTo="#a0a0a0"
+                gradientColor="rgba(150,150,150,0.06)"
+                gradientOpacity={0.6}
               >
-                {/* Icon */}
-                <div className="w-10 h-10 rounded-lg bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 flex items-center justify-center mb-6 group-hover:bg-gray-200 dark:group-hover:bg-white/10 transition-colors duration-300">
-                  <Icon className="w-5 h-5 text-gray-600 dark:text-gray-300" />
+                <div className="p-7 flex flex-col h-full">
+                  <div className="w-14 h-14 mb-5">
+                    <Image
+                      src={service.icon3d}
+                      alt={service.title}
+                      width={56}
+                      height={56}
+                      className="w-full h-full object-contain dark:invert"
+                    />
+                  </div>
+                  <h3 className="text-lg font-semibold tracking-tight mb-2">{service.title}</h3>
+                  <p className="text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed mb-5">{service.description}</p>
+                  <ul className="space-y-2 mt-auto">
+                    {service.items.map((item, i) => (
+                      <li key={i} className="flex items-center gap-2.5 text-xs text-neutral-500 dark:text-neutral-400">
+                        <span className="w-1 h-1 rounded-full bg-neutral-300 dark:bg-neutral-700 shrink-0" />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-
-                {/* Title & desc */}
-                <h3 className="text-lg font-semibold tracking-tight mb-2">
-                  {service.title}
-                </h3>
-                <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed mb-5">
-                  {service.description}
-                </p>
-
-                {/* Items */}
-                <ul className="space-y-2">
-                  {service.items.map((item, i) => (
-                    <li
-                      key={i}
-                      className="flex items-center gap-2.5 text-sm text-gray-600 dark:text-gray-400"
-                    >
-                      <span className="w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 shrink-0" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
-            );
-          })}
+              </MagicCard>
+            </BlurFade>
+          ))}
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-20 px-6 md:px-16 lg:px-24 border-t border-gray-100 dark:border-gray-900">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="max-w-2xl mx-auto text-center"
-        >
-          <h2 className="text-2xl md:text-3xl font-bold tracking-tight mb-4">
-            ¿Listo para empezar?
-          </h2>
-          <p className="text-gray-500 dark:text-gray-400 mb-8">
-            Cuéntanos tu idea y te ayudamos a hacerla realidad.
-          </p>
-          <Link href="/contact">
-            <Button variant="default" size="lg" className="px-10">
-              Contáctanos
-            </Button>
-          </Link>
-        </motion.div>
+      <section className="py-20 px-6 md:px-16 lg:px-24 border-t border-neutral-100 dark:border-neutral-900">
+        <BlurFade delay={0.1} inView>
+          <div className="max-w-2xl mx-auto text-center">
+            <h2 className="text-2xl md:text-3xl font-bold tracking-tight mb-4">¿Listo para empezar?</h2>
+            <p className="text-neutral-500 dark:text-neutral-400 mb-8">Cuéntanos tu idea y te ayudamos a hacerla realidad.</p>
+            <div className="flex justify-center">
+              <Link href="/contact">
+                <ShimmerButton shimmerColor="rgba(255,255,255,0.4)" shimmerSize="0.05em" background="rgba(0,0,0,1)" className="px-10 py-3 text-base font-medium dark:border-white/20">
+                  Contáctanos
+                </ShimmerButton>
+              </Link>
+            </div>
+          </div>
+        </BlurFade>
       </section>
     </div>
   );

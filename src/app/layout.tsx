@@ -6,6 +6,7 @@ import { ibmPlexMono, geistSans } from './fonts';
 import { Toaster } from "@/components/Toaster/Toaster";
 import { Spotlight } from "@/components/ui/Spotlight";
 import Footer from "@/components/Footer/Footer";
+import ScrollToTop from "@/components/ScrollToTop/ScrollToTop";
 import SmoothScroll from "@/components/SmoothScroll/SmoothScroll";
 
 export const metadata: Metadata = {
@@ -60,6 +61,7 @@ export default function RootLayout({
           <Navbar />
           <main>{children}</main>
           <Footer />
+          <ScrollToTop />
         </ThemeProvider>
       </body>
     </html>
