@@ -5,11 +5,23 @@ import Link from "next/link";
 import { BlurFade } from "@/components/ui/blur-fade";
 import { NumberTicker } from "@/components/ui/number-ticker";
 import { ShimmerButton } from "@/components/ui/shimmer-button";
+import { Linkedin, Github } from "lucide-react";
 
 const teamMembers = [
-  { name: "Adrian Auqui Perez", role: "Ingeniero de Software", imageUrl: "/logos/adrian.png" },
-  { name: "Ronal Condor Blas", role: "Ingeniero de Software", imageUrl: "/logos/ronald.png" },
-  { name: "Fabrizzio Vilchez", role: "Ingeniero de Software", imageUrl: "/logos/fabrizzio.png" },
+  {
+    name: "Adrian Auqui Perez",
+    role: "Full-Stack Developer & AI Engineer",
+    imageUrl: "/logos/adrian.png",
+    github: "https://github.com/Auky216",
+    linkedin: "https://www.linkedin.com/in/adrian-antonio-auqui-perez-a079b2291/",
+  },
+  {
+    name: "Fabrizzio Vilchez",
+    role: "Full-Stack Developer & DevOps",
+    imageUrl: "/logos/fabrizzio.png",
+    github: "https://github.com/Fabrizzio20k",
+    linkedin: "https://www.linkedin.com/in/fabrizzio20k/",
+  },
 ];
 
 const values = [
@@ -40,7 +52,7 @@ export default function About() {
           </BlurFade>
           <BlurFade delay={0.3} inView>
             <p className="text-lg text-neutral-500 dark:text-neutral-400 leading-relaxed max-w-2xl mx-auto">
-              Ingenieros de software en Perú apasionados por la IA y soluciones digitales que generan impacto real.
+              Estudiantes de Ciencias de la Computación en UTEC, Lima, apasionados por la IA y soluciones digitales que generan impacto real.
             </p>
           </BlurFade>
         </div>
@@ -113,15 +125,23 @@ export default function About() {
               </h2>
             </div>
           </BlurFade>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto">
             {teamMembers.map((member, i) => (
-              <BlurFade key={i} delay={0.1 + i * 0.1} inView>
+              <BlurFade key={i} delay={0.1 + i * 0.15} inView>
                 <div className="text-center group cursor-pointer">
                   <div className="mb-4 overflow-hidden rounded-xl border border-neutral-200 dark:border-neutral-800">
                     <Image src={member.imageUrl} alt={member.name} width={300} height={380} className="w-full h-64 object-cover grayscale group-hover:grayscale-0 transition-all duration-500" />
                   </div>
                   <h3 className="text-base font-semibold tracking-tight">{member.name}</h3>
                   <p className="text-xs text-neutral-400 font-mono tracking-wide">{member.role}</p>
+                  <div className="flex items-center justify-center gap-3 mt-2">
+                    <Link href={member.linkedin} target="_blank" rel="noopener noreferrer">
+                      <Linkedin className="w-4 h-4 text-neutral-300 dark:text-neutral-700 hover:text-black dark:hover:text-white transition-colors cursor-pointer" />
+                    </Link>
+                    <Link href={member.github} target="_blank" rel="noopener noreferrer">
+                      <Github className="w-4 h-4 text-neutral-300 dark:text-neutral-700 hover:text-black dark:hover:text-white transition-colors cursor-pointer" />
+                    </Link>
+                  </div>
                 </div>
               </BlurFade>
             ))}

@@ -2,6 +2,7 @@
 
 import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import Image from "next/image";
+import Link from "next/link";
 import { motion, useSpring } from "framer-motion";
 import { useRef } from "react";
 import { BlurFade } from "@/components/ui/blur-fade";
@@ -10,18 +11,19 @@ import { Linkedin, Github } from "lucide-react";
 const teamMembers = [
   {
     name: "Adrian Auqui Perez",
-    role: "Ingeniero de Software",
+    role: "Full-Stack Developer & AI Engineer",
+    bio: "Especialista en IA, Three.js y arquitectura de software. Apasionado por compiladores y estructuras de datos.",
     imageUrl: "/logos/adrian.png",
-  },
-  {
-    name: "Ronal Condor Blas",
-    role: "Ingeniero de Software",
-    imageUrl: "/logos/ronald.png",
+    github: "https://github.com/Auky216",
+    linkedin: "https://www.linkedin.com/in/adrian-antonio-auqui-perez-a079b2291/",
   },
   {
     name: "Fabrizzio Vilchez",
-    role: "Ingeniero de Software",
+    role: "Full-Stack Developer & DevOps",
+    bio: "Desarrollador full-stack con +4 años de experiencia. Enfocado en cloud computing, ML y sistemas IoT.",
     imageUrl: "/logos/fabrizzio.png",
+    github: "https://github.com/Fabrizzio20k",
+    linkedin: "https://www.linkedin.com/in/fabrizzio20k/",
   },
 ];
 
@@ -51,7 +53,7 @@ function TeamCard({
   };
 
   return (
-    <BlurFade delay={0.15 + index * 0.12} inView>
+    <BlurFade delay={0.15 + index * 0.15} inView>
       <motion.div
         ref={ref}
         onMouseMove={handleMouseMove}
@@ -82,9 +84,16 @@ function TeamCard({
             <p className="text-xs text-neutral-400 font-mono tracking-wide">
               {member.role}
             </p>
+            <p className="text-xs text-neutral-500 dark:text-neutral-400 leading-relaxed px-2">
+              {member.bio}
+            </p>
             <div className="flex items-center justify-center gap-3 pt-2">
-              <Linkedin className="w-4 h-4 text-neutral-300 dark:text-neutral-700 hover:text-black dark:hover:text-white transition-colors cursor-pointer" />
-              <Github className="w-4 h-4 text-neutral-300 dark:text-neutral-700 hover:text-black dark:hover:text-white transition-colors cursor-pointer" />
+              <Link href={member.linkedin} target="_blank" rel="noopener noreferrer">
+                <Linkedin className="w-4 h-4 text-neutral-300 dark:text-neutral-700 hover:text-black dark:hover:text-white transition-colors cursor-pointer" />
+              </Link>
+              <Link href={member.github} target="_blank" rel="noopener noreferrer">
+                <Github className="w-4 h-4 text-neutral-300 dark:text-neutral-700 hover:text-black dark:hover:text-white transition-colors cursor-pointer" />
+              </Link>
             </div>
           </CardContent>
         </Card>
@@ -106,10 +115,13 @@ export default function Team() {
               Expertos{" "}
               <span className="font-light">en desarrollo</span>
             </h2>
+            <p className="text-sm text-neutral-500 dark:text-neutral-400 mt-4 max-w-lg mx-auto">
+              Estudiantes de Ciencias de la Computación en UTEC, Lima, Perú.
+            </p>
           </div>
         </BlurFade>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-2xl mx-auto">
           {teamMembers.map((member, index) => (
             <TeamCard key={index} member={member} index={index} />
           ))}
