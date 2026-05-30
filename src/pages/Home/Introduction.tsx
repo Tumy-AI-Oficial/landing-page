@@ -14,7 +14,10 @@ import { ArrowRight } from "lucide-react";
 
 const ReflectiveSphere = dynamic(
   () => import("@/components/Scene3D/ReflectiveSphere"),
-  { ssr: false }
+  { 
+    ssr: false,
+    loading: () => <div className="w-[250px] h-[250px] md:w-[400px] md:h-[400px] rounded-full bg-neutral-200/50 dark:bg-neutral-800/50 animate-pulse" />
+  }
 );
 
 export default function Introduction() {
@@ -47,16 +50,20 @@ export default function Introduction() {
           </div>
         </BlurFade>
 
-        <div>
+        <div className="space-y-4">
           <BlurFade delay={0.2} inView>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight">
-              Hacemos tus proyectos con{" "}
+              <span className="text-neutral-900 dark:text-neutral-100">Tumy.ai</span>
+              <br />
+              <span className="text-3xl md:text-4xl lg:text-5xl text-neutral-600 dark:text-neutral-300">
+                Hacemos tus proyectos con{" "}
+              </span>
               <WordRotate
                 words={[
                   "inteligencia artificial",
-                  "automatizacion",
-                  "innovacion",
-                  "tecnologia",
+                  "automatización",
+                  "innovación",
+                  "tecnología",
                 ]}
                 className="inline-block"
               />
@@ -65,9 +72,9 @@ export default function Introduction() {
         </div>
 
         <BlurFade delay={0.4} inView>
-          <p className="text-lg md:text-xl text-neutral-500 dark:text-neutral-400 max-w-lg leading-relaxed">
+          <h2 className="text-lg md:text-xl text-neutral-500 dark:text-neutral-400 max-w-lg leading-relaxed font-normal">
             Soluciones de IA diseñadas para escalar tu negocio.
-          </p>
+          </h2>
         </BlurFade>
 
         <BlurFade delay={0.5} inView>
