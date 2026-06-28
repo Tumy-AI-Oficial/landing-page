@@ -49,10 +49,8 @@ export default function ContactPage() {
         duration: 3000,
       });
     }
-  };
-
-  return (
-    <div className="flex flex-col items-center min-h-screen">
+  };  return (
+    <div id="contact" className="flex flex-col items-center justify-center min-h-screen w-full">
       <div className="w-full max-w-6xl px-6 py-24 mx-auto">
         {/* Header */}
         <BlurFade delay={0.1} inView>
@@ -63,14 +61,14 @@ export default function ContactPage() {
             <h1 className="text-3xl font-bold lg:text-5xl tracking-tight mb-4">
               Contáctanos
             </h1>
-            <p className="text-lg text-neutral-500 dark:text-neutral-400 max-w-3xl">
+            <p className="text-lg text-neutral-550 dark:text-neutral-400 max-w-3xl">
               Estamos aquí para ayudarte. Escríbenos por cualquiera de estos
               medios.
             </p>
           </div>
         </BlurFade>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-24">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
           {/* Form */}
           <BlurFade delay={0.2} inView direction="right">
             <div className="flex flex-col">
@@ -190,38 +188,6 @@ export default function ContactPage() {
             </div>
           </BlurFade>
         </div>
-
-        {/* Stats */}
-        <BlurFade delay={0.2} inView>
-          <div className="grid grid-cols-2 gap-px bg-neutral-200 dark:bg-neutral-800 rounded-2xl overflow-hidden border border-neutral-200 dark:border-neutral-800 mb-16">
-            <div className="bg-white dark:bg-black p-10 text-center">
-              <div className="text-2xl font-bold mb-1 tracking-tight">+500</div>
-              <p className="text-xs text-neutral-400 font-mono tracking-wide uppercase">
-                Clientes satisfechos
-              </p>
-            </div>
-            <div className="bg-white dark:bg-black p-10 text-center">
-              <div className="text-2xl font-bold mb-1 tracking-tight">
-                98%
-              </div>
-              <p className="text-xs text-neutral-400 font-mono tracking-wide uppercase">
-                Respuesta en 24h
-              </p>
-            </div>
-          </div>
-        </BlurFade>
-
-        {/* Testimonial */}
-        <BlurFade delay={0.3} inView>
-          <div className="p-8 border border-neutral-200 dark:border-neutral-800 rounded-2xl mb-16">
-            <p className="text-lg italic mb-4 text-neutral-600 dark:text-neutral-400">
-              &quot;Tumy AI ha transformado la manera en que gestionamos
-              nuestras consultas y nos ha permitido llegar al mercado más
-              rápido.&quot;
-            </p>
-            <p className="font-medium text-sm">Empresa Cliente</p>
-          </div>
-        </BlurFade>
       </div>
     </div>
   );

@@ -8,6 +8,8 @@ import { Spotlight } from "@/components/ui/Spotlight";
 import Footer from "@/components/Footer/Footer";
 import ScrollToTop from "@/components/ScrollToTop/ScrollToTop";
 import SmoothScroll from "@/components/SmoothScroll/SmoothScroll";
+import LiquidGlassBackground from "@/components/LiquidGlassBackground/LiquidGlassBackground";
+import ScrollProgress from "@/components/ScrollProgress/ScrollProgress";
 
 export const metadata: Metadata = {
   title: "Tumy.ai (Tumyai) | Soluciones de Inteligencia Artificial para Empresas",
@@ -70,6 +72,8 @@ export default function RootLayout({
       <body className="min-h-screen flex flex-col min-w-[400px] max-w-[1920px] mx-auto font-sans antialiased">
         <ThemeProvider attribute="class">
           <SmoothScroll />
+          <LiquidGlassBackground />
+          <ScrollProgress />
           <Spotlight
             className="-top-40 left-0 md:-top-20 md:left-60"
             fill="white"

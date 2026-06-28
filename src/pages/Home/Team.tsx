@@ -1,6 +1,5 @@
 "use client";
 
-import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, useSpring } from "framer-motion";
@@ -13,7 +12,7 @@ const teamMembers = [
     name: "Adrian Auqui Perez",
     role: "Full-Stack Developer & AI Engineer",
     bio: "Especialista en IA, Three.js y arquitectura de software. Apasionado por compiladores y estructuras de datos.",
-    imageUrl: "/logos/adrian.png",
+    imageUrl: "/logos/adrian.jpg",
     github: "https://github.com/Auky216",
     linkedin: "https://www.linkedin.com/in/adrian-antonio-auqui-perez-a079b2291/",
   },
@@ -21,7 +20,7 @@ const teamMembers = [
     name: "Fabrizzio Vilchez",
     role: "Full-Stack Developer & DevOps",
     bio: "Desarrollador full-stack con +4 años de experiencia. Enfocado en cloud computing, ML y sistemas IoT.",
-    imageUrl: "/logos/fabrizzio.png",
+    imageUrl: "/logos/fabrizzio.jpg",
     github: "https://github.com/Fabrizzio20k",
     linkedin: "https://www.linkedin.com/in/fabrizzio20k/",
   },
@@ -65,8 +64,8 @@ function TeamCard({
           transformStyle: "preserve-3d",
         }}
       >
-        <Card className="bg-white dark:bg-black border border-neutral-200 dark:border-neutral-800 hover:border-neutral-400 dark:hover:border-neutral-600 transition-all duration-300 overflow-hidden cursor-pointer group">
-          <CardHeader className="flex items-center justify-center p-6 pb-4">
+        <div className="liquid-glass-card rounded-xl border border-white/10 dark:border-white/5 hover:border-white/20 dark:hover:border-white/10 transition-all duration-300 overflow-hidden cursor-pointer group">
+          <div className="flex items-center justify-center p-6 pb-4">
             <div className="relative overflow-hidden rounded-lg">
               <Image
                 width={200}
@@ -76,8 +75,8 @@ function TeamCard({
                 className="w-40 h-52 object-cover rounded-lg grayscale group-hover:grayscale-0 transition-all duration-500"
               />
             </div>
-          </CardHeader>
-          <CardContent className="text-center space-y-2 pb-6">
+          </div>
+          <div className="text-center space-y-2 px-6 pb-6">
             <h3 className="text-base font-semibold tracking-tight">
               {member.name}
             </h3>
@@ -95,8 +94,8 @@ function TeamCard({
                 <Github className="w-4 h-4 text-neutral-300 dark:text-neutral-700 hover:text-black dark:hover:text-white transition-colors cursor-pointer" />
               </Link>
             </div>
-          </CardContent>
-        </Card>
+          </div>
+        </div>
       </motion.div>
     </BlurFade>
   );
@@ -104,7 +103,7 @@ function TeamCard({
 
 export default function Team() {
   return (
-    <section className="w-full py-24 px-6 md:px-16 lg:px-24">
+    <section className="w-full min-h-screen flex flex-col justify-center py-24 px-6 md:px-16 lg:px-24">
       <div className="max-w-7xl mx-auto">
         <BlurFade delay={0.1} inView>
           <div className="text-center mb-16">

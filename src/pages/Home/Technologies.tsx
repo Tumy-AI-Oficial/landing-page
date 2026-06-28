@@ -57,7 +57,7 @@ function TechItem({
 
 export default function Technologies() {
   return (
-    <section className="w-full py-20 border-t border-neutral-100 dark:border-neutral-900">
+    <section className="w-full min-h-[50vh] flex flex-col justify-center py-24">
       <div className="max-w-7xl mx-auto px-6 md:px-16 lg:px-24">
         <BlurFade delay={0.1} inView>
           <div className="text-center mb-12">

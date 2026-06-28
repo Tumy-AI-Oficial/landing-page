@@ -14,13 +14,7 @@ export const Spotlight = ({ className, fill, height = "100vh" }: SpotlightProps)
             style={{ height }} // Aplicamos la altura personalizada aquí
         >
             {/* Div de fondo con degradado para difuminar los bordes */}
-            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/[0.96] to-transparent dark:via-black/[0.96] via-white/[0.96]">
-                <div className="absolute inset-0 [background-size:40px_40px]
-                    dark:[background-image:linear-gradient(to_right,#171717_1px,transparent_1px),linear-gradient(to_bottom,#171717_1px,transparent_1px)]
-                    [background-image:linear-gradient(to_right,rgba(0,0,0,0.1)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,0,0,0.1)_1px,transparent_1px)]
-                    spotlight-mask"
-                />
-            </div>
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/[0.96] to-transparent dark:via-black/[0.96] via-white/[0.96]" />
             <svg
                 className={cn(
                     "animate-spotlight pointer-events-none absolute z-[1] h-[169%] w-[138%] lg:w-[84%] opacity-40",
