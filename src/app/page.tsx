@@ -1,11 +1,11 @@
-import Introduction from "@/pages/Home/Introduction";
-import Services from "@/pages/Home/Services";
-import ProductsSection from "@/pages/Home/ProductsSection";
-import AboutSection from "@/pages/Home/AboutSection";
-import Advantages from "@/pages/Home/Advantages";
-import Team from "@/pages/Home/Team";
-import ContactPage from "@/pages/Contact/ContactPage";
-import CTA from "@/pages/Home/CTA";
+import Introduction from "@/views/Home/Introduction";
+import Services from "@/views/Home/Services";
+import ProductsSection from "@/views/Home/ProductsSection";
+import AboutSection from "@/views/Home/AboutSection";
+import Advantages from "@/views/Home/Advantages";
+import Team from "@/views/Home/Team";
+import ContactPage from "@/views/Contact/ContactPage";
+import CTA from "@/views/Home/CTA";
 
 export default function Home() {
   return (

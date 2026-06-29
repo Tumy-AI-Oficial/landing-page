@@ -10,6 +10,7 @@ import ScrollToTop from "@/components/ScrollToTop/ScrollToTop";
 import SmoothScroll from "@/components/SmoothScroll/SmoothScroll";
 import LiquidGlassBackground from "@/components/LiquidGlassBackground/LiquidGlassBackground";
 import ScrollProgress from "@/components/ScrollProgress/ScrollProgress";
+import { I18nProvider } from "@/lib/i18n";
 
 export const metadata: Metadata = {
   title: "Tumy.ai (Tumyai) | Soluciones de Inteligencia Artificial para Empresas",
@@ -20,9 +21,17 @@ export const metadata: Metadata = {
   publisher: "Tumy.ai",
   robots: "index, follow",
   metadataBase: new URL("https://tumy.ai"),
+  alternates: {
+    canonical: "https://tumy.ai",
+    languages: {
+      "es-ES": "https://tumy.ai",
+      "en-US": "https://tumy.ai",
+    },
+  },
   openGraph: {
     type: "website",
     locale: "es_ES",
+    alternateLocale: ["en_US"],
     url: "https://tumy.ai",
     siteName: "Tumy.ai",
     title: "Tumy.ai (Tumyai) | IA para Empresas",
@@ -49,7 +58,6 @@ export default function RootLayout({
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="theme-color" content="#ffffff" />
-        <link rel="canonical" href="https://tumy.ai" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -71,19 +79,21 @@ export default function RootLayout({
       </head>
       <body className="min-h-screen flex flex-col min-w-[400px] max-w-[1920px] mx-auto font-sans antialiased">
         <ThemeProvider attribute="class">
-          <SmoothScroll />
-          <LiquidGlassBackground />
-          <ScrollProgress />
-          <Spotlight
-            className="-top-40 left-0 md:-top-20 md:left-60"
-            fill="white"
-            height="90vh"
-          />
-          <Toaster />
-          <Navbar />
-          <main>{children}</main>
-          <Footer />
-          <ScrollToTop />
+          <I18nProvider>
+            <SmoothScroll />
+            <LiquidGlassBackground />
+            <ScrollProgress />
+            <Spotlight
+              className="-top-40 left-0 md:-top-20 md:left-60"
+              fill="white"
+              height="90vh"
+            />
+            <Toaster />
+            <Navbar />
+            <main>{children}</main>
+            <Footer />
+            <ScrollToTop />
+          </I18nProvider>
         </ThemeProvider>
       </body>
     </html>

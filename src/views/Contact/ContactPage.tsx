@@ -8,6 +8,7 @@ import { ShimmerButton } from "@/components/ui/shimmer-button";
 import { FaTiktok, FaInstagram, FaWhatsapp, FaEnvelope, FaLinkedinIn } from "react-icons/fa6";
 import { IconType } from "react-icons";
 import axios from "axios";
+import { useI18n } from "@/lib/i18n";
 
 interface SocialMediaCardProps {
   icon: IconType;
@@ -29,6 +30,8 @@ const SocialMedias: SocialMediaCardProps[] = [
 ];
 
 export default function ContactPage() {
+  const { t } = useI18n();
+
   const {
     register,
     handleSubmit,
@@ -40,30 +43,31 @@ export default function ContactPage() {
     try {
       await axios.post("/api/email", data);
       toast.success(
-        "Mensaje enviado con éxito. Nos pondremos en contacto contigo.",
+        t("contact.formSuccess"),
         { duration: 3000 }
       );
       reset();
     } catch {
-      toast.error("Error al enviar el mensaje. Inténtalo de nuevo.", {
+      toast.error(t("contact.formError"), {
         duration: 3000,
       });
     }
-  };  return (
+  };
+
+  return (
     <div id="contact" className="flex flex-col items-center justify-center min-h-screen w-full">
       <div className="w-full max-w-6xl px-6 py-24 mx-auto">
         {/* Header */}
         <BlurFade delay={0.1} inView>
           <div className="mb-16 text-center lg:text-left">
-            <p className="text-xs font-medium tracking-[0.2em] uppercase text-neutral-400 mb-4 font-mono">
-              Contacto
+            <p className="text-xs font-medium tracking-[0.2em] uppercase text-neutral-450 mb-4 font-mono">
+              {t("contact.sectionTag")}
             </p>
             <h1 className="text-3xl font-bold lg:text-5xl tracking-tight mb-4">
-              Contáctanos
+              {t("contact.sectionTitle")}
             </h1>
             <p className="text-lg text-neutral-550 dark:text-neutral-400 max-w-3xl">
-              Estamos aquí para ayudarte. Escríbenos por cualquiera de estos
-              medios.
+              {t("contact.sectionSub")}
             </p>
           </div>
         </BlurFade>
@@ -73,7 +77,7 @@ export default function ContactPage() {
           <BlurFade delay={0.2} inView direction="right">
             <div className="flex flex-col">
               <h2 className="text-xl font-semibold mb-8 tracking-tight">
-                Escríbenos un mensaje
+                {t("contact.formTitle")}
               </h2>
               <form
                 onSubmit={handleSubmit(onSubmit)}
@@ -82,11 +86,11 @@ export default function ContactPage() {
                 <div>
                   <input
                     {...register("nombre", {
-                      required: "El nombre es requerido",
+                      required: t("contact.validationName"),
                     })}
                     type="text"
-                    placeholder="Nombre"
-                    className={`w-full p-4 rounded-xl border bg-transparent text-base outline-none transition-colors duration-200 ${
+                    placeholder={t("contact.formNamePlaceholder")}
+                    className={`w-full p-4 rounded-xl border bg-transparent text-base outline-none transition-colors duration-250 ${
                       errors.nombre
                         ? "border-red-500"
                         : "border-neutral-200 dark:border-neutral-800 focus:border-neutral-400 dark:focus:border-neutral-600"
@@ -102,15 +106,15 @@ export default function ContactPage() {
                 <div>
                   <input
                     {...register("correo", {
-                      required: "El correo es requerido",
+                      required: t("contact.validationEmailRequired"),
                       pattern: {
                         value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                        message: "Correo electrónico inválido",
+                        message: t("contact.validationEmailInvalid"),
                       },
                     })}
                     type="email"
-                    placeholder="Correo electrónico"
-                    className={`w-full p-4 rounded-xl border bg-transparent text-base outline-none transition-colors duration-200 ${
+                    placeholder={t("contact.formEmailPlaceholder")}
+                    className={`w-full p-4 rounded-xl border bg-transparent text-base outline-none transition-colors duration-250 ${
                       errors.correo
                         ? "border-red-500"
                         : "border-neutral-200 dark:border-neutral-800 focus:border-neutral-400 dark:focus:border-neutral-600"
@@ -126,15 +130,15 @@ export default function ContactPage() {
                 <div>
                   <textarea
                     {...register("mensaje", {
-                      required: "El mensaje es requerido",
+                      required: t("contact.validationMessageRequired"),
                       minLength: {
                         value: 10,
-                        message: "Mínimo 10 caracteres",
+                        message: t("contact.validationMessageMin"),
                       },
                     })}
-                    placeholder="¿Cómo podemos ayudarte?"
+                    placeholder={t("contact.formMessagePlaceholder")}
                     rows={5}
-                    className={`w-full p-4 rounded-xl border bg-transparent text-base outline-none resize-none transition-colors duration-200 ${
+                    className={`w-full p-4 rounded-xl border bg-transparent text-base outline-none resize-none transition-colors duration-250 ${
                       errors.mensaje
                         ? "border-red-500"
                         : "border-neutral-200 dark:border-neutral-800 focus:border-neutral-400 dark:focus:border-neutral-600"
@@ -154,7 +158,7 @@ export default function ContactPage() {
                   className="w-full py-4 text-base font-medium dark:border-white/20"
                   disabled={isSubmitting}
                 >
-                  {isSubmitting ? "Enviando..." : "Enviar mensaje"}
+                  {isSubmitting ? t("contact.formSubmitting") : t("contact.formSubmit")}
                 </ShimmerButton>
               </form>
             </div>
@@ -164,7 +168,7 @@ export default function ContactPage() {
           <BlurFade delay={0.3} inView direction="left">
             <div className="flex flex-col">
               <h2 className="text-xl font-semibold mb-8 tracking-tight">
-                Redes sociales
+                {t("contact.socialTitle")}
               </h2>
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 w-full">
                 {SocialMedias.map((socialMedia, index) => (

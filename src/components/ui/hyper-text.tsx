@@ -87,6 +87,11 @@ export function HyperText({
   const iterationCount = useRef(0)
   const elementRef = useRef<HTMLElement | null>(null)
 
+  useEffect(() => {
+    setDisplayText(children.split(""))
+    iterationCount.current = 0
+  }, [children])
+
   const handleAnimationTrigger = () => {
     if (animateOnHover && !isAnimating) {
       iterationCount.current = 0
@@ -176,7 +181,7 @@ export function HyperText({
             key={index}
             className={cn("font-mono", letter === " " ? "w-3" : "")}
           >
-            {letter.toUpperCase()}
+            {(letter || "").toUpperCase()}
           </motion.span>
         ))}
       </AnimatePresence>

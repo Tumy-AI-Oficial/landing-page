@@ -5,8 +5,11 @@ import Image from "next/image";
 import { BlurFade } from "@/components/ui/blur-fade";
 import { ShimmerButton } from "@/components/ui/shimmer-button";
 import { HyperText } from "@/components/ui/hyper-text";
+import { useI18n } from "@/lib/i18n";
 
 export default function CTA() {
+  const { t } = useI18n();
+
   return (
     <section className="w-full py-24 px-6 md:px-16 lg:px-24">
       <div className="max-w-5xl mx-auto relative">
@@ -37,7 +40,7 @@ export default function CTA() {
           <div className="relative z-10 flex flex-col items-center">
             <BlurFade delay={0.1} inView>
               <p className="text-xs font-semibold tracking-[0.25em] uppercase text-neutral-400 dark:text-neutral-500 mb-6 font-mono">
-                Transformación Digital
+                {t("cta.sectionTag")}
               </p>
             </BlurFade>
 
@@ -47,26 +50,26 @@ export default function CTA() {
                   duration={1200}
                   className="text-3xl md:text-5xl lg:text-6xl font-bold tracking-tight"
                 >
-                  Siguiente nivel
+                  {t("cta.sectionTitle")}
                 </HyperText>
               </h2>
             </BlurFade>
 
             <BlurFade delay={0.3} inView>
               <p className="text-neutral-500 dark:text-neutral-300 max-w-xl mx-auto mb-12 text-sm md:text-base leading-relaxed">
-                Agenda una sesión estratégica gratuita con nuestro equipo de ingenieros de IA. Diseñamos soluciones personalizadas que integran agentes inteligentes, flujos de automatización y experiencias interactivas a la medida de tu modelo de negocio.
+                {t("cta.sectionSub")}
               </p>
             </BlurFade>
 
             <BlurFade delay={0.4} inView>
-              <Link href="/contact" passHref>
+              <Link href="/#contact" passHref>
                 <ShimmerButton
                   shimmerColor="rgba(255,255,255,0.4)"
                   shimmerSize="0.05em"
                   background="rgba(0,0,0,1)"
                   className="px-10 py-4 text-base font-semibold dark:border-white/20 hover:scale-105 transition-transform duration-200 cursor-pointer shadow-lg"
                 >
-                  Agendar consulta gratuita
+                  {t("cta.button")}
                 </ShimmerButton>
               </Link>
             </BlurFade>

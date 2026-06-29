@@ -5,10 +5,12 @@ import Image from "next/image";
 import { useTheme } from "next-themes";
 import Link from "next/link";
 import { FaTiktok, FaLinkedin, FaInstagram } from "react-icons/fa6";
+import { useI18n } from "@/lib/i18n";
 
 export default function Footer() {
     const { resolvedTheme } = useTheme();
     const [mounted, setMounted] = useState(false);
+    const { t, locale } = useI18n();
 
     useEffect(() => {
         setMounted(true);
@@ -35,39 +37,39 @@ export default function Footer() {
                             <span className="text-base font-semibold tracking-tight">Tumy.ai</span>
                         </div>
                         <p className="text-sm text-neutral-500 dark:text-neutral-400 text-center lg:text-left max-w-[200px]">
-                            Soluciones de IA para transformar tu negocio.
+                            {t("footer.tagline")}
                         </p>
                     </div>
 
                     {/* Company */}
                     <div className="flex flex-col items-center lg:items-start gap-3">
                         <h4 className="text-xs font-medium tracking-widest uppercase text-neutral-400 dark:text-neutral-500">
-                            Empresa
+                            {t("footer.colCompany")}
                         </h4>
                         <nav className="flex flex-col items-center lg:items-start gap-2.5">
-                            <Link href="/about" className="text-sm text-neutral-500 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-colors">Nosotros</Link>
-                            <Link href="/contact" className="text-sm text-neutral-500 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-colors">Contáctanos</Link>
-                            <Link href="/solutions" className="text-sm text-neutral-500 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-colors">Soluciones</Link>
-                            <Link href="/products" className="text-sm text-neutral-500 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-colors">Productos</Link>
+                            <Link href="/#about" className="text-sm text-neutral-500 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-colors">{t("navbar.about")}</Link>
+                            <Link href="/#contact" className="text-sm text-neutral-500 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-colors">{t("navbar.contact")}</Link>
+                            <Link href="/#services" className="text-sm text-neutral-500 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-colors">{locale === 'es' ? 'Soluciones' : 'Solutions'}</Link>
+                            <Link href="/#products" className="text-sm text-neutral-500 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-colors">{t("navbar.products")}</Link>
                         </nav>
                     </div>
 
                     {/* Legal */}
                     <div className="flex flex-col items-center lg:items-start gap-3">
                         <h4 className="text-xs font-medium tracking-widest uppercase text-neutral-400 dark:text-neutral-500">
-                            Legal
+                            {t("footer.colLegal")}
                         </h4>
                         <nav className="flex flex-col items-center lg:items-start gap-2.5">
-                            <Link href="/contact" className="text-sm text-neutral-500 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-colors">Términos de servicio</Link>
-                            <Link href="/contact" className="text-sm text-neutral-500 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-colors">Privacidad</Link>
-                            <Link href="/contact" className="text-sm text-neutral-500 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-colors">Cookies</Link>
+                            <Link href="/#contact" className="text-sm text-neutral-500 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-colors">{t("footer.terms")}</Link>
+                            <Link href="/#contact" className="text-sm text-neutral-500 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-colors">{t("footer.privacy")}</Link>
+                            <Link href="/#contact" className="text-sm text-neutral-500 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-colors">{t("footer.cookies")}</Link>
                         </nav>
                     </div>
 
                     {/* Social */}
                     <div className="flex flex-col items-center lg:items-start gap-3">
                         <h4 className="text-xs font-medium tracking-widest uppercase text-neutral-400 dark:text-neutral-500">
-                            Social
+                            {t("footer.colSocial")}
                         </h4>
                         <div className="flex items-center gap-4">
                             <Link href="https://www.instagram.com/tumyai/" target="_blank" rel="noopener noreferrer" className="text-neutral-400 hover:text-black dark:hover:text-white transition-colors">
@@ -87,7 +89,7 @@ export default function Footer() {
             {/* Bottom bar */}
             <div className="border-t border-neutral-100 dark:border-neutral-900 py-6 px-6 md:px-16 lg:px-24">
                 <p className="text-center text-xs text-neutral-400 dark:text-neutral-600">
-                    {year} &copy; Tumy.ai. Todos los derechos reservados.
+                    {year} &copy; Tumy.ai. {t("footer.rights")}
                 </p>
             </div>
         </footer>

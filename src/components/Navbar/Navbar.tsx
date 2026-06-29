@@ -6,6 +6,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
+import { FaMoon, FaSun, FaBars, FaX } from "react-icons/fa6";
+import { Button } from '../ui/button';
+import { useI18n } from '@/lib/i18n';
 
 // High-fidelity morphing Theme Toggle component (Sun/Moon rotative switch)
 function ThemeToggle({ theme, setTheme }: { theme: string; setTheme: (theme: string) => void }) {
@@ -45,19 +48,43 @@ function ThemeToggle({ theme, setTheme }: { theme: string; setTheme: (theme: str
         </button>
     );
 }
-import { FaMoon, FaSun, FaBars, FaX } from "react-icons/fa6";
-import { Button } from '../ui/button';
+
+// High-fidelity morphing Language Toggle component (ES/EN rotative switch)
+function LanguageToggle() {
+    const { locale, setLocale } = useI18n();
+    
+    return (
+        <button
+            onClick={() => setLocale(locale === "es" ? "en" : "es")}
+            className="relative w-8 h-8 rounded-full border border-neutral-200/50 dark:border-white/[0.08] bg-white/20 dark:bg-white/[0.04] backdrop-blur-md flex items-center justify-center cursor-pointer shadow-xs hover:scale-105 active:scale-95 transition-all duration-200 text-[10px] font-mono font-bold text-neutral-600 dark:text-neutral-350 hover:text-black dark:hover:text-white shrink-0 select-none"
+            aria-label="Cambiar idioma"
+        >
+            <AnimatePresence mode="wait" initial={false}>
+                <motion.div
+                    key={locale}
+                    initial={{ rotate: -90, scale: 0, opacity: 0 }}
+                    animate={{ rotate: 0, scale: 1, opacity: 1 }}
+                    exit={{ rotate: 90, scale: 0, opacity: 0 }}
+                    transition={{ duration: 0.2, ease: "easeInOut" }}
+                    className="flex items-center justify-center"
+                >
+                    {locale.toUpperCase()}
+                </motion.div>
+            </AnimatePresence>
+        </button>
+    );
+}
 
 interface NavbarItem {
-    title: string;
+    titleKey: string;
     href: string;
 }
 
 const navbarItems: NavbarItem[] = [
-    { title: 'Inicio', href: '/' },
-    { title: 'Servicios', href: '/#services' },
-    { title: 'Productos', href: '/#products' },
-    { title: 'Nosotros', href: '/#about' },
+    { titleKey: 'navbar.home', href: '/' },
+    { titleKey: 'navbar.services', href: '/#services' },
+    { titleKey: 'navbar.products', href: '/#products' },
+    { titleKey: 'navbar.about', href: '/#about' },
 ];
 
 export default function Navbar() {
@@ -67,6 +94,7 @@ export default function Navbar() {
     const [activeHash, setActiveHash] = useState('');
     const { setTheme, resolvedTheme } = useTheme();
     const pathname = usePathname();
+    const { t, locale } = useI18n();
 
     useEffect(() => {
         setMounted(true);
@@ -188,7 +216,7 @@ export default function Navbar() {
                                         }`}
                                         onClick={() => setMenuOpen(false)}
                                     >
-                                        {item.title}
+                                        {t(item.titleKey)}
                                     </Link>
                                 </li>
                             );
@@ -197,9 +225,20 @@ export default function Navbar() {
                             className={`transform transition-all duration-300 flex items-center justify-between border-t border-white/10 pt-6 mt-4 ${menuOpen ? 'translate-x-0 opacity-100' : '-translate-x-8 opacity-0'}`}
                             style={{ transitionDelay: `${navbarItems.length * 75}ms` }}
                         >
-                            <span className="text-lg text-white/60 font-medium">Modo oscuro</span>
+                            <span className="text-lg text-white/60 font-medium">{t("navbar.darkMode")}</span>
                             {mounted ? (
                                 <ThemeToggle theme={resolvedTheme || 'dark'} setTheme={setTheme} />
+                            ) : (
+                                <div className="w-8 h-8 rounded-full border border-neutral-200/50 dark:border-white/[0.08] bg-white/20 dark:bg-white/[0.04] backdrop-blur-md" />
+                            )}
+                        </li>
+                        <li
+                            className={`transform transition-all duration-300 flex items-center justify-between border-t border-white/10 pt-6 mt-4 ${menuOpen ? 'translate-x-0 opacity-100' : '-translate-x-8 opacity-0'}`}
+                            style={{ transitionDelay: `${(navbarItems.length + 1) * 75}ms` }}
+                        >
+                            <span className="text-lg text-white/60 font-medium">{locale === 'es' ? 'Idioma' : 'Language'}</span>
+                            {mounted ? (
+                                <LanguageToggle />
                             ) : (
                                 <div className="w-8 h-8 rounded-full border border-neutral-200/50 dark:border-white/[0.08] bg-white/20 dark:bg-white/[0.04] backdrop-blur-md" />
                             )}
@@ -242,7 +281,7 @@ export default function Navbar() {
                                             : 'text-neutral-500 dark:text-neutral-400 hover:text-black dark:hover:text-white'
                                     }`}
                                 >
-                                    {item.title}
+                                    {t(item.titleKey)}
                                 </Link>
                                 {isActive && (
                                     <motion.div
@@ -259,7 +298,7 @@ export default function Navbar() {
                 <div className="md:hidden flex items-center gap-3">
                     <Link href="/#contact">
                         <Button variant="default" size="sm" className="cursor-pointer rounded-full font-semibold px-4 bg-black dark:bg-white text-white dark:text-black hover:bg-black/90 dark:hover:bg-white/90 active:scale-95 transition-all text-xs h-8">
-                            Contacto
+                            {t("navbar.contactShort")}
                         </Button>
                     </Link>
                     <button
@@ -273,13 +312,19 @@ export default function Navbar() {
 
                 <div className='hidden md:flex items-center gap-4 min-w-[32px] h-8 justify-center'>
                     {mounted ? (
-                        <ThemeToggle theme={resolvedTheme || 'dark'} setTheme={setTheme} />
+                        <>
+                            <LanguageToggle />
+                            <ThemeToggle theme={resolvedTheme || 'dark'} setTheme={setTheme} />
+                        </>
                     ) : (
-                        <div className="w-8 h-8 rounded-full border border-neutral-200/50 dark:border-white/[0.08] bg-white/20 dark:bg-white/[0.04] backdrop-blur-md" />
+                        <>
+                            <div className="w-8 h-8 rounded-full border border-neutral-200/50 dark:border-white/[0.08] bg-white/20 dark:bg-white/[0.04] backdrop-blur-md" />
+                            <div className="w-8 h-8 rounded-full border border-neutral-200/50 dark:border-white/[0.08] bg-white/20 dark:bg-white/[0.04] backdrop-blur-md" />
+                        </>
                     )}
                     <Link href="/#contact">
                         <Button variant="default" size="sm" className="cursor-pointer rounded-full font-semibold px-5 bg-black dark:bg-white text-white dark:text-black hover:bg-black/90 dark:hover:bg-white/90 hover:scale-105 active:scale-95 transition-all text-xs h-8 shadow-xs">
-                            Contáctanos
+                            {t("navbar.contact")}
                         </Button>
                     </Link>
                 </div>

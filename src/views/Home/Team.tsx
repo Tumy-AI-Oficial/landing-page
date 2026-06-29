@@ -6,31 +6,35 @@ import { motion, useSpring } from "framer-motion";
 import { useRef } from "react";
 import { BlurFade } from "@/components/ui/blur-fade";
 import { Linkedin, Github } from "lucide-react";
+import { useI18n } from "@/lib/i18n";
 
-const teamMembers = [
+const teamData = [
   {
-    name: "Adrian Auqui Perez",
-    role: "Full-Stack Developer & AI Engineer",
-    bio: "Especialista en IA, Three.js y arquitectura de software. Apasionado por compiladores y estructuras de datos.",
     imageUrl: "/logos/adrian.jpg",
     github: "https://github.com/Auky216",
     linkedin: "https://www.linkedin.com/in/adrian-antonio-auqui-perez-a079b2291/",
   },
   {
-    name: "Fabrizzio Vilchez",
-    role: "Full-Stack Developer & DevOps",
-    bio: "Desarrollador full-stack con +4 años de experiencia. Enfocado en cloud computing, ML y sistemas IoT.",
     imageUrl: "/logos/fabrizzio.jpg",
     github: "https://github.com/Fabrizzio20k",
     linkedin: "https://www.linkedin.com/in/fabrizzio20k/",
   },
 ];
 
+interface TeamMember {
+  name: string;
+  role: string;
+  bio: string;
+  imageUrl: string;
+  github: string;
+  linkedin: string;
+}
+
 function TeamCard({
   member,
   index,
 }: {
-  member: (typeof teamMembers)[0];
+  member: TeamMember;
   index: number;
 }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -102,28 +106,40 @@ function TeamCard({
 }
 
 export default function Team() {
+  const { t } = useI18n();
+  const teamItems = t("team.items") || [];
+
   return (
     <section className="w-full min-h-screen flex flex-col justify-center py-24 px-6 md:px-16 lg:px-24">
       <div className="max-w-7xl mx-auto">
         <BlurFade delay={0.1} inView>
           <div className="text-center mb-16">
             <p className="text-xs font-medium tracking-[0.2em] uppercase text-neutral-400 mb-3 font-mono">
-              Equipo
+              {t("team.sectionTag")}
             </p>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight">
-              Expertos{" "}
-              <span className="font-light">en desarrollo</span>
+              {t("team.sectionTitle")}<span className="font-light">{t("team.sectionTitleHighlight")}</span>
             </h2>
             <p className="text-sm text-neutral-500 dark:text-neutral-400 mt-4 max-w-lg mx-auto">
-              Estudiantes de Ciencias de la Computación en UTEC, Lima, Perú.
+              {t("team.sectionSub")}
             </p>
           </div>
         </BlurFade>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-2xl mx-auto">
-          {teamMembers.map((member, index) => (
-            <TeamCard key={index} member={member} index={index} />
-          ))}
+          {teamData.map((member, index) => {
+            const item = teamItems[index] || {};
+            const fullMember = {
+              ...member,
+              name: item.name || "",
+              role: item.role || "",
+              bio: item.bio || "",
+            };
+
+            return (
+              <TeamCard key={index} member={fullMember} index={index} />
+            );
+          })}
         </div>
       </div>
     </section>

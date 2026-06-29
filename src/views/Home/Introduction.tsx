@@ -7,6 +7,7 @@ import { WordRotate } from "@/components/ui/word-rotate";
 import { useEffect, useState, useRef } from "react";
 import { useScroll, useTransform, motion } from "framer-motion";
 import ScrollFrameVideo from "@/components/Scene3D/ScrollFrameVideo";
+import { useI18n } from "@/lib/i18n";
 import {
   SiNextdotjs,
   SiReact,
@@ -30,6 +31,7 @@ const techIcons = [
 ];
 
 export default function Introduction() {
+  const { t } = useI18n();
   const [mounted, setMounted] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -75,47 +77,44 @@ export default function Introduction() {
             <BlurFade delay={0.2} inView>
               <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tight">
                 <span className="text-neutral-900 dark:text-neutral-100 font-light">
-                  Hacemos tus proyectos con{" "}
+                  {t("introduction.headingPrefix")}
                 </span>
-                <WordRotate
-                  words={[
-                    "inteligencia artificial",
-                    "automatización",
-                    "innovación",
-                    "tecnología",
-                  ]}
-                  className="inline-block"
-                />
+                {mounted && (
+                  <WordRotate
+                    words={t("introduction.words")}
+                    className="inline-block"
+                  />
+                )}
               </h1>
             </BlurFade>
           </div>
 
           <BlurFade delay={0.4} inView>
             <h2 className="text-lg md:text-xl text-neutral-500 dark:text-neutral-400 max-w-lg leading-relaxed font-normal">
-              Soluciones de IA diseñadas para escalar tu negocio.
+              {t("introduction.subheading")}
             </h2>
           </BlurFade>
 
           <BlurFade delay={0.5} inView>
             <div className="flex flex-row items-center gap-4 justify-center">
-              <Link href="/contact" passHref>
+              <Link href="/#contact" passHref>
                 <ShimmerButton
                   shimmerColor="rgba(255,255,255,0.4)"
                   shimmerSize="0.05em"
                   background="rgba(0,0,0,1)"
                   className="px-8 py-3 text-base font-medium dark:border-white/20"
                 >
-                  Contáctanos
+                  {t("introduction.ctaContact")}
                 </ShimmerButton>
               </Link>
-              <Link href="/contact" passHref>
+              <Link href="/#contact" passHref>
                 <ShimmerButton
                   shimmerColor="rgba(255,255,255,0.4)"
                   shimmerSize="0.05em"
                   background="rgba(0,0,0,1)"
                   className="px-8 py-3 text-base font-medium dark:border-white/20"
                 >
-                  Prueba Gratuita
+                  {t("introduction.ctaFreeTrial")}
                 </ShimmerButton>
               </Link>
             </div>
