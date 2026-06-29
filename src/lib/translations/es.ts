@@ -182,5 +182,29 @@ export const es = {
     recommendation: "Recomendación: Regresar a zona segura.",
     commandPrompt: "invitado@tumy.ai:~$ cd /inicio",
     button: "Ejecutar inicio.sh"
+  },
+  cookieBanner: {
+    message: "Utilizamos cookies esenciales para mejorar tu experiencia y analizar el tráfico del sitio. Al continuar navegando, aceptas nuestra política de cookies.",
+    accept: "Aceptar",
+    decline: "Rechazar"
+  },
+  cookiesPage: {
+    title: "Política de Cookies",
+    subtitle: "Información sobre cómo utilizamos las cookies en nuestro sitio web.",
+    intro: "En Tumy.ai, valoramos tu privacidad. Esta política detalla qué cookies utilizamos y con qué fines.",
+    typesTitle: "Cookies que utilizamos",
+    essentialTitle: "1. Cookies Esenciales",
+    essentialDesc: "Estas cookies son necesarias para el funcionamiento del sitio y no se pueden desactivar en nuestros sistemas ya que recuerdan tus preferencias.",
+    tableHeaders: ["Nombre", "Propósito", "Duración"],
+    cookiesList: [
+      { name: "lang / NEXT_LOCALE", purpose: "Almacena tu preferencia de idioma seleccionado (Español o Inglés).", duration: "1 año" },
+      { name: "cookie-consent", purpose: "Almacena tu decisión sobre la aceptación o rechazo de nuestra política de cookies.", duration: "1 año" },
+      { name: "theme", purpose: "Almacena tu preferencia del tema visual de la interfaz (Claro u Oscuro).", duration: "Persistente" }
+    ],
+    manageTitle: "Administrar tus preferencias",
+    manageDesc: "Puedes restablecer tu configuración de cookies en cualquier momento utilizando el siguiente botón. Esto limpiará tus registros y hará aparecer el banner de consentimiento de nuevo.",
+    resetButton: "Restablecer preferencias de cookies",
+    resetSuccess: "Preferencias restablecidas con éxito. Recargando la página...",
+    backButton: "Volver al inicio"
   }
 };

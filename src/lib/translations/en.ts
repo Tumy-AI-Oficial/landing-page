@@ -182,5 +182,29 @@ export const en = {
     recommendation: "Recommendation: Return to a safe zone.",
     commandPrompt: "guest@tumy.ai:~$ cd /home",
     button: "Execute home.sh"
+  },
+  cookieBanner: {
+    message: "We use essential cookies to improve your experience and analyze site traffic. By continuing to browse, you agree to our cookie policy.",
+    accept: "Accept",
+    decline: "Decline"
+  },
+  cookiesPage: {
+    title: "Cookie Policy",
+    subtitle: "Information about how we use cookies on our website.",
+    intro: "At Tumy.ai, we value your privacy. This policy details what cookies we use and for what purposes.",
+    typesTitle: "Cookies We Use",
+    essentialTitle: "1. Essential Cookies",
+    essentialDesc: "These cookies are necessary for the website to function and cannot be deactivated in our systems since they store your preferences.",
+    tableHeaders: ["Name", "Purpose", "Duration"],
+    cookiesList: [
+      { name: "lang / NEXT_LOCALE", purpose: "Stores your selected language preference (Spanish or English).", duration: "1 year" },
+      { name: "cookie-consent", purpose: "Stores your decision regarding the acceptance or rejection of our cookie policy.", duration: "1 year" },
+      { name: "theme", purpose: "Stores your preference for the interface's visual theme (Light or Dark).", duration: "Persistent" }
+    ],
+    manageTitle: "Manage Your Preferences",
+    manageDesc: "You can reset your cookie settings at any time using the button below. This will clear your records and make the consent banner reappear.",
+    resetButton: "Reset Cookie Preferences",
+    resetSuccess: "Preferences reset successfully. Reloading page...",
+    backButton: "Back to Home"
   }
 };

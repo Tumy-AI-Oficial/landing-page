@@ -11,6 +11,7 @@ import SmoothScroll from "@/components/SmoothScroll/SmoothScroll";
 import LiquidGlassBackground from "@/components/LiquidGlassBackground/LiquidGlassBackground";
 import ScrollProgress from "@/components/ScrollProgress/ScrollProgress";
 import { I18nProvider } from "@/lib/i18n";
+import CookieBanner from "@/components/CookieBanner/CookieBanner";
 
 export const metadata: Metadata = {
   title:
@@ -144,6 +145,7 @@ export default function RootLayout({
             <main>{children}</main>
             <Footer />
             <ScrollToTop />
+            <CookieBanner />
           </I18nProvider>
         </ThemeProvider>
       </body>

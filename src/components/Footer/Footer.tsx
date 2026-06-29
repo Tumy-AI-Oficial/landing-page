@@ -62,7 +62,7 @@ export default function Footer() {
                         <nav className="flex flex-col items-center lg:items-start gap-2.5">
                             <Link href="/#contact" className="text-sm text-neutral-500 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-colors">{t("footer.terms")}</Link>
                             <Link href="/#contact" className="text-sm text-neutral-500 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-colors">{t("footer.privacy")}</Link>
-                            <Link href="/#contact" className="text-sm text-neutral-500 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-colors">{t("footer.cookies")}</Link>
+                            <Link href="/cookies" className="text-sm text-neutral-500 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-colors">{t("footer.cookies")}</Link>
                         </nav>
                     </div>
 
