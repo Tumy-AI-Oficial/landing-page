@@ -11,9 +11,7 @@ const cspHeader = `
   form-action 'self';
   frame-ancestors 'none';
   upgrade-insecure-requests;
-`
-  .replace(/\s{2,}/g, " ")
-  .trim();
+`.replace(/\s{2,}/g, ' ').trim();
 
 const nextConfig: NextConfig = {
   images: {
@@ -27,7 +25,7 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       {
-        source: "/(.*)",
+        source: "/:path*",
         headers: [
           {
             key: "Content-Security-Policy",

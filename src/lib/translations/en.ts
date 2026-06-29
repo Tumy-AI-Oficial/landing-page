@@ -172,5 +172,15 @@ export const en = {
     privacy: "Privacy",
     cookies: "Cookies",
     rights: "All rights reserved."
+  },
+  notFound: {
+    title: "404 - Route Not Found",
+    subtitle: "The system has detected an anomaly: the requested path does not exist on this server.",
+    recoveryProtocol: "Recovery protocol initiated.",
+    analyzingRequest: "Analyzing request...",
+    routeError: "ERROR: 404_PAGE_NOT_FOUND",
+    recommendation: "Recommendation: Return to a safe zone.",
+    commandPrompt: "guest@tumy.ai:~$ cd /home",
+    button: "Execute home.sh"
   }
 };

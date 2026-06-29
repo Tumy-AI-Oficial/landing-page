@@ -172,5 +172,15 @@ export const es = {
     privacy: "Privacidad",
     cookies: "Cookies",
     rights: "Todos los derechos reservados."
+  },
+  notFound: {
+    title: "404 - Ruta no encontrada",
+    subtitle: "El sistema ha detectado una anomalía: la ruta especificada no existe en este servidor.",
+    recoveryProtocol: "Protocolo de recuperación iniciado.",
+    analyzingRequest: "Analizando solicitud...",
+    routeError: "ERROR: 404_PAGE_NOT_FOUND",
+    recommendation: "Recomendación: Regresar a zona segura.",
+    commandPrompt: "invitado@tumy.ai:~$ cd /inicio",
+    button: "Ejecutar inicio.sh"
   }
 };

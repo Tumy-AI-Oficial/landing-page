@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { ThemeProvider } from 'next-themes';
+import { ThemeProvider } from "next-themes";
 import "./globals.css";
 import Navbar from "@/components/Navbar/Navbar";
-import { ibmPlexMono, geistSans } from './fonts';
+import { ibmPlexMono, geistSans } from "./fonts";
 import { Toaster } from "@/components/Toaster/Toaster";
 import { Spotlight } from "@/components/ui/Spotlight";
 import Footer from "@/components/Footer/Footer";
@@ -13,9 +13,25 @@ import ScrollProgress from "@/components/ScrollProgress/ScrollProgress";
 import { I18nProvider } from "@/lib/i18n";
 
 export const metadata: Metadata = {
-  title: "Tumy.ai (Tumyai) | Soluciones de Inteligencia Artificial para Empresas",
-  description: "Impulsa la innovación de tu empresa con Tumy.ai (Tumyai). Desarrollo de herramientas, automatización y soluciones de IA (Inteligencia Artificial) adaptadas a tus necesidades.",
-  keywords: ["Tumy.ai", "Tumyai", "Tumy AI", "Tumy ai", "IA", "Inteligencia Artificial", "Soluciones empresariales", "Automatización", "Machine Learning"],
+  title:
+    "Tumy.ai (Tumyai) | Soluciones de Inteligencia Artificial para Empresas",
+  description:
+    "Impulsa la innovación de tu empresa con Tumy.ai (Tumyai). Desarrollo de herramientas, automatización y soluciones de IA (Inteligencia Artificial) adaptadas a tus necesidades.",
+  keywords: [
+    "Tumy.ai",
+    "Tumyai",
+    "Tumy AI",
+    "Tumy ai",
+    "tumi ai",
+    "tumi.ai",
+    "tumiai",
+    "Tumi AI",
+    "IA",
+    "Inteligencia Artificial",
+    "Soluciones empresariales",
+    "Automatización",
+    "Machine Learning",
+  ],
   authors: [{ name: "Tumy.ai", url: "https://tumy.ai" }],
   creator: "Tumy.ai",
   publisher: "Tumy.ai",
@@ -35,12 +51,14 @@ export const metadata: Metadata = {
     url: "https://tumy.ai",
     siteName: "Tumy.ai",
     title: "Tumy.ai (Tumyai) | IA para Empresas",
-    description: "Tumy.ai es tu socio estratégico en IA. Soluciones basadas en Inteligencia Artificial para automatizar procesos y transformar digitalmente tu empresa.",
+    description:
+      "Tumy.ai es tu socio estratégico en IA. Soluciones basadas en Inteligencia Artificial para automatizar procesos y transformar digitalmente tu empresa.",
   },
   twitter: {
     card: "summary_large_image",
     title: "Tumy.ai (Tumyai) | IA para Empresas",
-    description: "Soluciones basadas en IA para automatizar procesos, aumentar la eficiencia y transformar digitalmente tu empresa.",
+    description:
+      "Soluciones basadas en IA para automatizar procesos, aumentar la eficiencia y transformar digitalmente tu empresa.",
   },
   icons: {
     icon: "/logos/icon.ico",
@@ -54,26 +72,59 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" suppressHydrationWarning className={`${geistSans.variable} ${ibmPlexMono.variable}`}>
+    <html
+      lang="es"
+      suppressHydrationWarning
+      className={`${geistSans.variable} ${ibmPlexMono.variable}`}
+    >
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="theme-color" content="#ffffff" />
+        <meta
+          httpEquiv="Content-Security-Policy"
+          content="default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' blob: data: https://images.unsplash.com; font-src 'self' data:; object-src 'none'; upgrade-insecure-requests;"
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Organization",
-              "name": "Tumy.ai",
-              "alternateName": ["Tumyai", "Tumy ai", "Tumy AI", "Tumy.ai Inteligencia Artificial"],
-              "url": "https://tumy.ai",
-              "logo": "https://tumy.ai/logos/icon.ico",
-              "description": "Tumy.ai (Tumyai) es una empresa especializada en soluciones empresariales de Inteligencia Artificial y automatización.",
-              "sameAs": [
+              name: "Tumy.ai",
+              alternateName: [
+                "Tumyai",
+                "Tumy ai",
+                "Tumy AI",
+                "Tumy.ai Inteligencia Artificial",
+                "Tumi.ai",
+                "Tumi AI",
+                "Tumi ai",
+                "tumiai",
+                "tumi ai",
+                "tumy ai",
+                "tumy.ai",
+                "tumyai",
+                "tumy.ai soluciones empresariales",
+                "tumy.ai automatización",
+                "tumy.ai machine learning",
+                "consultoría IA",
+                "tumy.ai desarrollo de herramientas",
+                "tumy.ai transformación digital",
+                "consultora peruana de IA",
+                "tumy.ai Perú",
+                "ia para empresas",
+                "soluciones de inteligencia artificial",
+                "automatización de procesos",
+              ],
+              url: "https://tumy.ai",
+              logo: "https://tumy.ai/logos/icon.ico",
+              description:
+                "Tumy.ai (Tumyai) es una empresa especializada en soluciones empresariales de Inteligencia Artificial y automatización.",
+              sameAs: [
                 "https://www.linkedin.com/company/tumyai",
-                "https://twitter.com/tumyai"
-              ]
-            })
+                "https://twitter.com/tumyai",
+              ],
+            }),
           }}
         />
       </head>
