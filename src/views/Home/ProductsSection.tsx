@@ -9,18 +9,23 @@ import { useI18n } from "@/lib/i18n";
 const projectsData = [
   {
     number: "01",
-    imageUrl: "/projects/sites.jpg",
+    imageUrl: "/projects/mac-lima.jpg?v=2",
+    url: "https://mac-lima.tumyai.com/",
   },
   {
     number: "02",
-    imageUrl: "/projects/commerce.jpg",
+    imageUrl: "/projects/sites.jpg",
   },
   {
     number: "03",
-    imageUrl: "/projects/bots.jpg",
+    imageUrl: "/projects/commerce.jpg",
   },
   {
     number: "04",
+    imageUrl: "/projects/bots.jpg",
+  },
+  {
+    number: "05",
     imageUrl: "/projects/analytics.jpg",
   },
 ];
@@ -36,8 +41,8 @@ export default function ProductsSection() {
   });
 
   // Map vertical scroll progress to horizontal translation
-  // Since we have 4 slides of ~650px, -62% is the optimal translation range
-  const xTranslation = useTransform(scrollYProgress, [0, 1], ["0%", "-62%"]);
+  // Since we have 5 slides of ~650px, -70% is the optimal translation range
+  const xTranslation = useTransform(scrollYProgress, [0, 1], ["0%", "-70%"]);
   
   // Smooth out horizontal motion with spring physics
   const x = useSpring(xTranslation, {
@@ -115,8 +120,18 @@ export default function ProductsSection() {
                       <span className="text-[9px] font-mono tracking-widest text-neutral-450 dark:text-neutral-500 uppercase">
                         {tagline}
                       </span>
-                      <h3 className="text-lg md:text-xl font-bold tracking-tight text-neutral-900 dark:text-neutral-100">
-                        {title}
+                      <h3 className="text-lg md:text-xl font-bold tracking-tight text-neutral-900 dark:text-neutral-100 flex items-center justify-between gap-2">
+                        <span>{title}</span>
+                        {proj.url && (
+                          <a
+                            href={proj.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center text-[10px] font-mono tracking-wider text-neutral-400 hover:text-black dark:hover:text-white uppercase transition-colors shrink-0"
+                          >
+                            {t("products.visitLink") || "Visitar ↗"}
+                          </a>
+                        )}
                       </h3>
                     </div>
                     

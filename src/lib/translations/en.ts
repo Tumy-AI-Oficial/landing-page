@@ -53,7 +53,14 @@ export const en = {
     sectionTitleHighlight: "projects",
     scrollText: "Keep scrolling",
     deliveryDetails: "Delivery details:",
+    visitLink: "Visit site ↗",
     items: [
+      {
+        title: "MAC Lima",
+        tagline: "Case Study: Museum Management Portal",
+        description: "Comprehensive management and cataloging system for the Museum of Contemporary Art in Lima. Enables digital administration of collections, artworks, donors, heritage, and institutional access control with Google Workspace.",
+        features: ["Digital cataloging of artworks & artists", "Donation management and tracking", "Granular role-based access control"]
+      },
       {
         title: "Tumy Sites",
         tagline: "Case Study: Aetherium Web Portal",

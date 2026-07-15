@@ -53,7 +53,14 @@ export const es = {
     sectionTitleHighlight: "destacados",
     scrollText: "Continúa el scroll",
     deliveryDetails: "Detalles de entrega:",
+    visitLink: "Visitar sitio ↗",
     items: [
+      {
+        title: "MAC Lima",
+        tagline: "Caso de Éxito: Portal de Administración Museográfica",
+        description: "Sistema integral de gestión y catalogación para el Museo de Arte Contemporáneo de Lima. Permite la administración digital de colecciones, obras de arte, donantes, patrimonio y control de accesos institucionales con Google Workspace.",
+        features: ["Catalogación digital de obras y artistas", "Gestión y seguimiento de donaciones", "Control de accesos con roles granulares"]
+      },
       {
         title: "Tumy Sites",
         tagline: "Caso de Éxito: Aetherium Web Portal",
