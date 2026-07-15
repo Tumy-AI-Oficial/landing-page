@@ -7,12 +7,21 @@ interface ScrollFrameVideoProps {
   containerRef: React.RefObject<HTMLDivElement | null>;
 }
 
+const getIsMobile = () => {
+  if (typeof window !== "undefined") {
+    return window.innerWidth < 768;
+  }
+  return false;
+};
+
 export default function ScrollFrameVideo({ containerRef }: ScrollFrameVideoProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const imagesRef = useRef<HTMLImageElement[]>([]);
   const [firstImage, setFirstImage] = useState<HTMLImageElement | null>(null);
-  const [canvasRes, setCanvasRes] = useState(1000); // High-res retina default
-  const [isMobile, setIsMobile] = useState(false);
+  
+  const initIsMobile = getIsMobile();
+  const [isMobile, setIsMobile] = useState(initIsMobile);
+  const [canvasRes, setCanvasRes] = useState(initIsMobile ? 450 : 1000);
 
   const totalFrames = 240;
   
@@ -20,15 +29,15 @@ export default function ScrollFrameVideo({ containerRef }: ScrollFrameVideoProps
   const step = isMobile ? 3 : 2;
   const framesCount = Math.floor(totalFrames / step);
 
-  // Detect device characteristics on mount to optimize resolution
+  // Listen to resize events dynamically
   useEffect(() => {
-    if (typeof window !== "undefined") {
+    const handleResize = () => {
       const mobile = window.innerWidth < 768;
       setIsMobile(mobile);
-      if (mobile) {
-        setCanvasRes(450); // Downscale to 450x450 on mobile for 80% pixel reduction
-      }
-    }
+      setCanvasRes(mobile ? 450 : 1000);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   // Optimized Preloading: Load first frame immediately, load rest in small batches in ref (zero re-renders)
