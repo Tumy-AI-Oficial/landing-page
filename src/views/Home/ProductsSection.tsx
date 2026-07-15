@@ -9,24 +9,24 @@ import { useI18n } from "@/lib/i18n";
 const projectsData = [
   {
     number: "01",
-    imageUrl: "/projects/mac-lima.jpg?v=2",
+    imageUrl: "/projects/mac-lima.webp?v=2",
     url: "https://mac-lima.tumyai.com/",
   },
   {
     number: "02",
-    imageUrl: "/projects/sites.jpg",
+    imageUrl: "/projects/sites.webp",
   },
   {
     number: "03",
-    imageUrl: "/projects/commerce.jpg",
+    imageUrl: "/projects/commerce.webp",
   },
   {
     number: "04",
-    imageUrl: "/projects/bots.jpg",
+    imageUrl: "/projects/bots.webp",
   },
   {
     number: "05",
-    imageUrl: "/projects/analytics.jpg",
+    imageUrl: "/projects/analytics.webp",
   },
 ];
 
