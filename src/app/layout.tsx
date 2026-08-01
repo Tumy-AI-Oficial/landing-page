@@ -135,11 +135,14 @@ export default function RootLayout({
             <SmoothScroll />
             <LiquidGlassBackground />
             <ScrollProgress />
-            <Spotlight
-              className="-top-40 left-0 md:-top-20 md:left-60"
-              fill="white"
-              height="90vh"
-            />
+            {/* Spotlight only on desktop — SVG blur stdDeviation=151 is too expensive on mobile */}
+            <div className="hidden md:block">
+              <Spotlight
+                className="-top-40 left-0 md:-top-20 md:left-60"
+                fill="white"
+                height="90vh"
+              />
+            </div>
             <Toaster />
             <Navbar />
             <main>{children}</main>

@@ -253,10 +253,9 @@
 }
 
 /* Glassmorphism Styles */
+/* Desktop: moderate blur — Mobile: no backdrop-filter (GPU cost too high on touch devices) */
 .liquid-glass-panel {
-  background: rgba(255, 255, 255, 0.04);
-  backdrop-filter: blur(24px) saturate(160%);
-  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  background: rgba(255, 255, 255, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: 
     0 4px 30px rgba(0, 0, 0, 0.03),
@@ -264,20 +263,32 @@
   transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+@media (min-width: 768px) {
+  .liquid-glass-panel {
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(12px) saturate(140%);
+    -webkit-backdrop-filter: blur(12px) saturate(140%);
+  }
+}
+
 .dark .liquid-glass-panel {
-  background: rgba(10, 10, 10, 0.45);
-  backdrop-filter: blur(24px) saturate(160%);
-  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  background: rgba(10, 10, 10, 0.6);
   border: 1px solid rgba(255, 255, 255, 0.04);
   box-shadow: 
     0 4px 30px rgba(0, 0, 0, 0.4),
     inset 0 1px 0px rgba(255, 255, 255, 0.05);
 }
 
+@media (min-width: 768px) {
+  .dark .liquid-glass-panel {
+    background: rgba(10, 10, 10, 0.45);
+    backdrop-filter: blur(12px) saturate(140%);
+    -webkit-backdrop-filter: blur(12px) saturate(140%);
+  }
+}
+
 .liquid-glass-card {
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(16px) saturate(130%);
-  -webkit-backdrop-filter: blur(16px) saturate(130%);
+  background: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.06);
   box-shadow: 
     0 10px 40px rgba(0, 0, 0, 0.04),
@@ -285,14 +296,28 @@
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+@media (min-width: 768px) {
+  .liquid-glass-card {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(8px) saturate(120%);
+    -webkit-backdrop-filter: blur(8px) saturate(120%);
+  }
+}
+
 .dark .liquid-glass-card {
-  background: rgba(15, 15, 15, 0.35);
-  backdrop-filter: blur(16px) saturate(130%);
-  -webkit-backdrop-filter: blur(16px) saturate(130%);
+  background: rgba(15, 15, 15, 0.55);
   border: 1px solid rgba(255, 255, 255, 0.03);
   box-shadow: 
     0 15px 50px rgba(0, 0, 0, 0.5),
     inset 0 1px 0px rgba(255, 255, 255, 0.04);
+}
+
+@media (min-width: 768px) {
+  .dark .liquid-glass-card {
+    background: rgba(15, 15, 15, 0.35);
+    backdrop-filter: blur(8px) saturate(120%);
+    -webkit-backdrop-filter: blur(8px) saturate(120%);
+  }
 }
 
 /* Glass interactive items */

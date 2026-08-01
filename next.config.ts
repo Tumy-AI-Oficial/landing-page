@@ -13,6 +13,9 @@ const cspHeader = `
   upgrade-insecure-requests;
 `.replace(/\s{2,}/g, ' ').trim();
 
+// 1 year in seconds — safe for hashed/versioned static assets
+const LONG_CACHE = "public, max-age=31536000, immutable";
+
 const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
@@ -48,6 +51,27 @@ const nextConfig: NextConfig = {
             value: "camera=(), microphone=(), geolocation=()",
           },
         ],
+      },
+      // Long-lived cache for static assets that never change between builds
+      {
+        source: "/frames/:file*",
+        headers: [{ key: "Cache-Control", value: LONG_CACHE }],
+      },
+      {
+        source: "/fonts/:file*",
+        headers: [{ key: "Cache-Control", value: LONG_CACHE }],
+      },
+      {
+        source: "/icons3d/:file*",
+        headers: [{ key: "Cache-Control", value: LONG_CACHE }],
+      },
+      {
+        source: "/logos/:file*",
+        headers: [{ key: "Cache-Control", value: LONG_CACHE }],
+      },
+      {
+        source: "/projects/:file*",
+        headers: [{ key: "Cache-Control", value: LONG_CACHE }],
       },
     ];
   },

@@ -249,10 +249,10 @@ export default function Navbar() {
 
             {/* Navbar */}
             <nav
-                className={`fixed top-4 left-1/2 -translate-x-1/2 flex items-center justify-between w-[calc(100%-2rem)] md:w-[calc(100%-4rem)] max-w-5xl z-100 py-2.5 px-6 md:px-8 select-none rounded-full transition-all duration-500 ${
+                className={`fixed top-4 left-1/2 -translate-x-1/2 flex items-center justify-between w-[calc(100%-2rem)] md:w-[calc(100%-4rem)] max-w-5xl z-100 py-2.5 px-6 md:px-8 select-none rounded-full transition-all duration-500 will-change-transform ${
                     scrolled
-                        ? 'bg-white/35 dark:bg-black/45 backdrop-blur-2xl border border-white/25 dark:border-white/[0.08] shadow-[0_12px_40px_rgba(0,0,0,0.06),inset_0_1px_2px_rgba(255,255,255,0.4)] dark:shadow-[0_20px_60px_rgba(0,0,0,0.6),inset_0_1px_1px_rgba(255,255,255,0.08)]'
-                        : 'bg-white/15 dark:bg-black/20 backdrop-blur-xl border border-white/15 dark:border-white/[0.04] shadow-[0_6px_20px_rgba(0,0,0,0.02)]'
+                        ? 'bg-white/35 dark:bg-black/45 backdrop-blur-xl border border-white/25 dark:border-white/[0.08] shadow-[0_12px_40px_rgba(0,0,0,0.06),inset_0_1px_2px_rgba(255,255,255,0.4)] dark:shadow-[0_20px_60px_rgba(0,0,0,0.6),inset_0_1px_1px_rgba(255,255,255,0.08)]'
+                        : 'bg-white/15 dark:bg-black/20 backdrop-blur-md border border-white/15 dark:border-white/[0.04] shadow-[0_6px_20px_rgba(0,0,0,0.02)]'
                     }`}
             >
                 <Link className='flex items-center gap-2.5 cursor-pointer' href="/">

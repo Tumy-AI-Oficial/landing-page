@@ -10,12 +10,12 @@ import { useI18n } from "@/lib/i18n";
 
 const teamData = [
   {
-    imageUrl: "/logos/adrian.jpg",
+    imageUrl: "/logos/adrian.webp",
     github: "https://github.com/Auky216",
     linkedin: "https://www.linkedin.com/in/adrian-antonio-auqui-perez-a079b2291/",
   },
   {
-    imageUrl: "/logos/fabrizzio.jpg",
+    imageUrl: "/logos/fabrizzio.webp",
     github: "https://github.com/Fabrizzio20k",
     linkedin: "https://www.linkedin.com/in/fabrizzio20k/",
   },
