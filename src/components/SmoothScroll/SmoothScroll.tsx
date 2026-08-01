@@ -3,23 +3,19 @@
 import { useEffect } from "react";
 import Lenis from "lenis";
 
-/** Returns true if the device is a touch device or Safari on iOS/iPadOS.
- *  On those devices, the native momentum scroll is GPU-accelerated and
- *  much smoother than a JS RAF loop — so we skip Lenis entirely. */
+/** Returns true if the device is a mobile touch device.
+ *  On mobile touch devices, native inertia scrolling is hardware-accelerated
+ *  by iOS/Android, so we let the browser handle touch natively.
+ *  On Desktop Safari / Mac Trackpads, Lenis handles smooth wheel scrolling. */
 function shouldDisableLenis(): boolean {
   if (typeof window === "undefined" || typeof navigator === "undefined")
     return false;
 
-  // Detect touch-primary devices (phones, tablets)
-  const isTouch =
+  return (
+    ("ontouchstart" in window) ||
     navigator.maxTouchPoints > 0 ||
-    ("ontouchstart" in window);
-
-  // Detect Safari (includes iOS WebView)
-  const isSafari =
-    /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
-
-  return isTouch || isSafari;
+    window.innerWidth < 768
+  );
 }
 
 export default function SmoothScroll() {
@@ -28,9 +24,10 @@ export default function SmoothScroll() {
     if (shouldDisableLenis()) return;
 
     const lenis = new Lenis({
-      duration: 1.2,
+      duration: 1.0,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smoothWheel: true,
+      touchMultiplier: 1.5,
     });
 
     let rafId: number;

@@ -70,13 +70,13 @@ export default function Introduction() {
         </div>
 
         <div className="space-y-6 max-w-lg mx-auto my-auto pt-6 pb-12">
-          <h1 className="text-3.5xl font-bold leading-tight tracking-tight">
+          <h1 className="text-3xl md:text-5xl font-extrabold leading-tight tracking-tight">
             <span className="text-neutral-900 dark:text-neutral-100 font-light block mb-1">
               {t("introduction.headingPrefix")}
             </span>
             <WordRotate
               words={t("introduction.words")}
-              className="inline-block"
+              className="inline-block font-extrabold"
             />
           </h1>
 
