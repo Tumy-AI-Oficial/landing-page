@@ -15,9 +15,10 @@ function HyperText({ text, startDelay = 0 }: { text: string; startDelay?: number
   const containerRef = useRef<HTMLSpanElement>(null);
   const isInView = useInView(containerRef, { once: true, margin: "-10%" });
 
-  // Trigger scramble on initial viewport entry or hover
+  // Trigger scramble on initial viewport entry or hover (desktop only)
   useEffect(() => {
     if (!isInView) return;
+    if (window.innerWidth < 768) return; // Skip JS scramble loop on mobile for performance
 
     let iteration = 0;
     let interval: NodeJS.Timeout;
@@ -127,7 +128,7 @@ export default function Services() {
                     }}
                     transition={{
                       duration: 4.5 + index * 0.5,
-                      repeat: Infinity,
+                      repeat: typeof window !== "undefined" && window.innerWidth < 768 ? 0 : Infinity,
                       ease: "easeInOut"
                     }}
                     className="w-28 h-28 md:w-36 md:h-36 relative z-10 cursor-pointer group-hover:scale-[1.03] transition-all duration-300 flex items-center justify-center"

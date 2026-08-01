@@ -23,7 +23,7 @@ export default function ScrollProgress() {
   return (
     <motion.div
       style={{ scaleX }}
-      className="fixed bottom-0 left-0 right-0 h-1 bg-black dark:bg-white origin-left z-50 shadow-[0_-2px_8px_rgba(0,0,0,0.1)] dark:shadow-[0_-2px_10px_rgba(255,255,255,0.15)] pointer-events-none"
+      className="hidden md:block fixed bottom-0 left-0 right-0 h-1 bg-black dark:bg-white origin-left z-50 shadow-[0_-2px_8px_rgba(0,0,0,0.1)] dark:shadow-[0_-2px_10px_rgba(255,255,255,0.15)] pointer-events-none"
     />
   );
 }

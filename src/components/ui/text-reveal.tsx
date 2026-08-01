@@ -2,6 +2,8 @@
 
 import {
   useRef,
+  useState,
+  useEffect,
   type ComponentPropsWithoutRef,
   type FC,
   type ReactNode,
@@ -16,6 +18,17 @@ export interface TextRevealProps extends ComponentPropsWithoutRef<"div"> {
 
 export const TextReveal: FC<TextRevealProps> = ({ children, className }) => {
   const sectionRef = useRef<HTMLDivElement | null>(null)
+  const [isMobile, setIsMobile] = useState(false)
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+    const checkMobile = () => setIsMobile(window.innerWidth < 768)
+    checkMobile()
+    window.addEventListener("resize", checkMobile)
+    return () => window.removeEventListener("resize", checkMobile)
+  }, [])
+
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start start", "end 0.75"],
@@ -26,21 +39,20 @@ export const TextReveal: FC<TextRevealProps> = ({ children, className }) => {
   }
 
   const words = children.split(" ")
-  
-  // Fade out the entire text container as we scroll past it
+
   const containerOpacity = useTransform(scrollYProgress, [0.80, 0.95], [1, 0])
 
   return (
-    <div ref={sectionRef} className={cn("relative z-0 h-[200vh]", className)}>
+    <div ref={sectionRef} className={cn("relative z-0 h-[130vh] md:h-[200vh]", className)}>
       <motion.div
         style={{ opacity: containerOpacity }}
         className={
-          "sticky top-0 mx-auto flex h-[50%] max-w-6xl items-center bg-transparent px-6 py-20"
+          "sticky top-0 mx-auto flex min-h-[50vh] h-screen max-w-6xl items-center justify-center bg-transparent px-6 py-12 md:py-20"
         }
       >
         <span
           className={
-            "flex flex-wrap p-4 text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold tracking-tighter text-black/20 dark:text-white/10"
+            "flex flex-wrap justify-center p-2 sm:p-4 text-3xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold tracking-tighter text-black/20 dark:text-white/10 text-center"
           }
         >
           {words.map((word, i) => {

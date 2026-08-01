@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import { useTheme } from "next-themes";
 import Link from "next/link";
-import { FaTiktok, FaLinkedin, FaInstagram } from "react-icons/fa6";
+import { FaTiktok, FaLinkedin, FaInstagram, FaWhatsapp } from "react-icons/fa6";
 import { useI18n } from "@/lib/i18n";
 
 export default function Footer() {
@@ -72,13 +72,16 @@ export default function Footer() {
                             {t("footer.colSocial")}
                         </h4>
                         <div className="flex items-center gap-4">
-                            <Link href="https://www.instagram.com/tumyai/" target="_blank" rel="noopener noreferrer" className="text-neutral-400 hover:text-black dark:hover:text-white transition-colors">
+                            <Link href="https://wa.me/51908748904" target="_blank" rel="noopener noreferrer" title="WhatsApp" className="text-neutral-400 hover:text-black dark:hover:text-white transition-colors">
+                                <FaWhatsapp className="text-lg" />
+                            </Link>
+                            <Link href="https://www.instagram.com/tumy_ai/" target="_blank" rel="noopener noreferrer" title="Instagram" className="text-neutral-400 hover:text-black dark:hover:text-white transition-colors">
                                 <FaInstagram className="text-lg" />
                             </Link>
-                            <Link href="https://www.tiktok.com/@tumyai" target="_blank" rel="noopener noreferrer" className="text-neutral-400 hover:text-black dark:hover:text-white transition-colors">
+                            <Link href="https://www.tiktok.com/@tumy.ai" target="_blank" rel="noopener noreferrer" title="TikTok" className="text-neutral-400 hover:text-black dark:hover:text-white transition-colors">
                                 <FaTiktok className="text-lg" />
                             </Link>
-                            <Link href="https://www.linkedin.com/company/tumyai/" target="_blank" rel="noopener noreferrer" className="text-neutral-400 hover:text-black dark:hover:text-white transition-colors">
+                            <Link href="https://www.linkedin.com/in/tumy-ai-98164b41a/" target="_blank" rel="noopener noreferrer" title="LinkedIn" className="text-neutral-400 hover:text-black dark:hover:text-white transition-colors">
                                 <FaLinkedin className="text-lg" />
                             </Link>
                         </div>

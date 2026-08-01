@@ -122,8 +122,10 @@ export default function RootLayout({
               description:
                 "Tumy.ai (Tumyai) es una empresa especializada en soluciones empresariales de Inteligencia Artificial y automatización.",
               sameAs: [
-                "https://www.linkedin.com/company/tumyai",
-                "https://twitter.com/tumyai",
+                "https://www.linkedin.com/in/tumy-ai-98164b41a/",
+                "https://www.instagram.com/tumy_ai/",
+                "https://www.tiktok.com/@tumy.ai",
+                "https://wa.me/51908748904",
               ],
             }),
           }}

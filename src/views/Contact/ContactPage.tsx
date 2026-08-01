@@ -13,6 +13,7 @@ import { useI18n } from "@/lib/i18n";
 interface SocialMediaCardProps {
   icon: IconType;
   username: string;
+  url: string;
 }
 
 interface FormValues {
@@ -22,11 +23,11 @@ interface FormValues {
 }
 
 const SocialMedias: SocialMediaCardProps[] = [
-  { icon: FaInstagram, username: "@TumyAI" },
-  { icon: FaTiktok, username: "@TumyAI" },
-  { icon: FaWhatsapp, username: "+51 999999999" },
-  { icon: FaEnvelope, username: "tumy.ai.pe@gmail.com" },
-  { icon: FaLinkedinIn, username: "Tumy AI" },
+  { icon: FaInstagram, username: "@tumy_ai", url: "https://www.instagram.com/tumy_ai/" },
+  { icon: FaTiktok, username: "@tumy.ai", url: "https://www.tiktok.com/@tumy.ai" },
+  { icon: FaWhatsapp, username: "+51 908 748 904", url: "https://wa.me/51908748904" },
+  { icon: FaEnvelope, username: "tumy.ai.pe@gmail.com", url: "mailto:tumy.ai.pe@gmail.com" },
+  { icon: FaLinkedinIn, username: "Tumy AI", url: "https://www.linkedin.com/in/tumy-ai-98164b41a/" },
 ];
 
 export default function ContactPage() {
@@ -172,21 +173,28 @@ export default function ContactPage() {
               </h2>
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 w-full">
                 {SocialMedias.map((socialMedia, index) => (
-                  <MagicCard
+                  <a
                     key={index}
-                    className="rounded-xl cursor-pointer"
-                    gradientFrom="#ffffff"
-                    gradientTo="#a0a0a0"
-                    gradientColor="rgba(150,150,150,0.06)"
-                    gradientOpacity={0.6}
+                    href={socialMedia.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block"
                   >
-                    <div className="flex flex-col items-center space-y-3 p-6">
-                      <socialMedia.icon className="text-3xl" />
-                      <p className="text-xs font-medium text-center break-words overflow-hidden w-full text-neutral-500 dark:text-neutral-400">
-                        {socialMedia.username}
-                      </p>
-                    </div>
-                  </MagicCard>
+                    <MagicCard
+                      className="rounded-xl cursor-pointer hover:scale-[1.02] transition-transform duration-200"
+                      gradientFrom="#ffffff"
+                      gradientTo="#a0a0a0"
+                      gradientColor="rgba(150,150,150,0.06)"
+                      gradientOpacity={0.6}
+                    >
+                      <div className="flex flex-col items-center space-y-3 p-6">
+                        <socialMedia.icon className="text-3xl" />
+                        <p className="text-xs font-medium text-center break-words overflow-hidden w-full text-neutral-500 dark:text-neutral-400 font-mono">
+                          {socialMedia.username}
+                        </p>
+                      </div>
+                    </MagicCard>
+                  </a>
                 ))}
               </div>
             </div>

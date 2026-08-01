@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { BlurFade } from "@/components/ui/blur-fade";
@@ -33,18 +33,27 @@ const projectsData = [
 export default function ProductsSection() {
   const containerRef = useRef<HTMLDivElement>(null);
   const { t } = useI18n();
+  const [isMobile, setIsMobile] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
   const translatedProducts = t("products.items") || [];
 
   // Monitor scroll progress of the portfolio container
   const { scrollYProgress } = useScroll({
     target: containerRef,
+    offset: ["start start", "end end"],
   });
 
-  // Map vertical scroll progress to horizontal translation
-  // Since we have 5 slides of ~650px, -70% is the optimal translation range
-  const xTranslation = useTransform(scrollYProgress, [0, 1], ["0%", "-70%"]);
+  const xTranslation = useTransform(scrollYProgress, [0, 1], ["0%", "-75%"]);
   
-  // Smooth out horizontal motion with spring physics
   const x = useSpring(xTranslation, {
     stiffness: 70,
     damping: 24,
@@ -53,10 +62,7 @@ export default function ProductsSection() {
 
   return (
     <div ref={containerRef} className="relative w-full h-[250vh] bg-transparent">
-      {/* Sticky viewport container */}
       <div className="sticky top-0 h-screen w-full overflow-hidden touch-pan-y flex flex-col justify-center">
-        
-        {/* Header (Visual title) */}
         <div className="max-w-7xl mx-auto w-full px-6 md:px-16 lg:px-24 mb-8 md:mb-12 select-none shrink-0">
           <BlurFade delay={0.1} inView>
             <p className="text-xs font-medium tracking-[0.2em] uppercase text-neutral-450 mb-2 font-mono">
@@ -70,11 +76,10 @@ export default function ProductsSection() {
           </BlurFade>
         </div>
 
-        {/* Horizontal scroll track - high performance solid rendering with NO backdrop filters */}
         <div className="w-full relative flex items-center">
           <motion.div
             style={{ x }}
-            className="flex gap-8 md:gap-12 pl-6 md:pl-24 pr-6 md:pr-24"
+            className="flex gap-6 md:gap-12 pl-6 md:pl-24 pr-6 md:pr-24"
           >
             {projectsData.map((proj, idx) => {
               const item = translatedProducts[idx] || {};
@@ -86,22 +91,18 @@ export default function ProductsSection() {
               return (
                 <div
                   key={idx}
-                  className="w-[85vw] md:w-[650px] shrink-0 liquid-glass-card rounded-2xl p-6 md:p-10 flex flex-col gap-6 relative select-none"
+                  className="w-[85vw] md:w-[650px] shrink-0 liquid-glass-card rounded-2xl p-6 md:p-10 flex flex-col gap-5 md:gap-6 relative select-none"
                 >
-                  {/* Monospace number label */}
-                  <span className="absolute top-4 right-6 font-mono text-[60px] font-bold text-neutral-200/30 dark:text-neutral-800/10 pointer-events-none leading-none">
+                  <span className="absolute top-4 right-6 font-mono text-[45px] md:text-[60px] font-bold text-neutral-200/30 dark:text-neutral-800/10 pointer-events-none leading-none">
                     {proj.number}
                   </span>
 
-                  {/* Screenshot Container (Mock Browser Window) */}
                   <div className="w-full relative rounded-xl overflow-hidden border border-neutral-250 dark:border-neutral-800 bg-neutral-200 dark:bg-black aspect-video shadow-md shrink-0">
-                    {/* Browser top bar */}
                     <div className="w-full h-6 bg-neutral-100 dark:bg-neutral-950 border-b border-neutral-200 dark:border-neutral-900 flex items-center gap-1 px-4">
                       <span className="w-2 h-2 rounded-full bg-neutral-300 dark:bg-neutral-850" />
                       <span className="w-2 h-2 rounded-full bg-neutral-300 dark:bg-neutral-850" />
                       <span className="w-2 h-2 rounded-full bg-neutral-300 dark:bg-neutral-850" />
                     </div>
-                    {/* Project image */}
                     <div className="relative w-full h-[calc(100%-1.5rem)] bg-neutral-100 dark:bg-neutral-950">
                       <Image 
                         src={proj.imageUrl} 
@@ -114,8 +115,7 @@ export default function ProductsSection() {
                     </div>
                   </div>
 
-                  {/* Typographic content */}
-                  <div className="space-y-4">
+                  <div className="space-y-3 md:space-y-4">
                     <div className="space-y-1">
                       <span className="text-[9px] font-mono tracking-widest text-neutral-450 dark:text-neutral-500 uppercase">
                         {tagline}
@@ -144,7 +144,7 @@ export default function ProductsSection() {
                       <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                         {features.map((feat: string, i: number) => (
                           <li key={i} className="flex items-start gap-2 text-xs text-neutral-600 dark:text-neutral-400">
-                            <span className="w-1 h-1 rounded-full bg-neutral-400 dark:bg-neutral-650 mt-1.5 shrink-0" />
+                            <span className="w-1 h-1 rounded-full bg-neutral-400 dark:bg-neutral-655 mt-1.5 shrink-0" />
                             <span>{feat}</span>
                           </li>
                         ))}
@@ -155,7 +155,6 @@ export default function ProductsSection() {
               );
             })}
 
-            {/* End Indicator Slide */}
             <div className="w-[30vw] md:w-[200px] shrink-0 flex flex-col justify-center items-center text-center p-6 select-none">
               <span className="w-1 h-1 rounded-full bg-neutral-400 dark:bg-neutral-600 animate-ping mb-3" />
               <p className="text-[10px] font-mono uppercase tracking-widest text-neutral-400">{t("products.scrollText")}</p>
@@ -165,4 +164,5 @@ export default function ProductsSection() {
       </div>
     </div>
   );
+
 }

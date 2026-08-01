@@ -20,14 +20,14 @@ const getIsMobile = () => {
 // This eliminates ~80 MB of RAM usage and the continuous canvas redraw loop.
 function MobileStaticFrame() {
   return (
-    <div className="relative flex items-center justify-center w-full h-full min-h-[380px]">
+    <div className="relative flex items-center justify-center w-full h-full min-h-[350px]">
       <NextImage
-        src="/frames/frame_000.webp"
+        src="/frames/frame_239.webp"
         alt="Tumy AI molecule"
-        width={380}
-        height={380}
+        width={400}
+        height={400}
         priority
-        className="w-[280px] h-[280px] object-contain filter invert dark:invert-0 brightness-[0.85] dark:brightness-100 contrast-[1.15] dark:contrast-100 drop-shadow-[0_20px_40px_rgba(0,0,0,0.10)] dark:drop-shadow-[0_25px_60px_rgba(255,255,255,0.05)]"
+        className="w-[300px] h-[300px] sm:w-[380px] sm:h-[380px] object-contain filter invert dark:invert-0 brightness-[0.95] dark:brightness-100 contrast-[1.08] dark:contrast-100 drop-shadow-[0_25px_50px_rgba(0,0,0,0.14)] dark:drop-shadow-[0_30px_70px_rgba(255,255,255,0.08)]"
       />
     </div>
   );
@@ -47,7 +47,7 @@ function DesktopScrollCanvas({ containerRef }: ScrollFrameVideoProps) {
   // Preloading: first frame immediately, rest in small batches
   useEffect(() => {
     const firstImg = new Image();
-    firstImg.src = "/frames/frame_000.webp";
+    firstImg.src = "/frames/frame_239.webp";
     firstImg.onload = () => setFirstImage(firstImg);
 
     const startPreloading = () => {

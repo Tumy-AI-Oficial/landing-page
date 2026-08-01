@@ -33,9 +33,18 @@ const techIcons = [
 export default function Introduction() {
   const { t } = useI18n();
   const [mounted, setMounted] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // Monitor scroll progress of the hero section
+  useEffect(() => {
+    setMounted(true);
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
+  // Monitor scroll progress of the hero section (Desktop only)
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end end"],
@@ -51,16 +60,50 @@ export default function Introduction() {
   const canvasScale = useTransform(scrollYProgress, [0, 0.5, 0.8, 1.0], [0.9, 1.4, 1.8, 2.1]);
   const canvasOpacity = useTransform(scrollYProgress, [0, 0.2, 0.6, 0.9], [0.75, 0.95, 0.95, 0.0]);
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  // ─── DEDICATED ULTRA-OPTIMIZED MOBILE HERO ──────────────────────────────────
+  if (mounted && isMobile) {
+    return (
+      <section className="relative w-full min-h-[85vh] py-20 px-6 flex flex-col items-center justify-center text-center overflow-hidden">
+        {/* Background static fast icon — showing final 3D frame (frame_239.webp) */}
+        <div className="absolute inset-0 flex items-center justify-center -z-10 opacity-80 dark:opacity-85 pointer-events-none">
+          <ScrollFrameVideo containerRef={containerRef} />
+        </div>
 
+        <div className="space-y-6 max-w-lg mx-auto my-auto pt-6 pb-12">
+          <h1 className="text-3.5xl font-bold leading-tight tracking-tight">
+            <span className="text-neutral-900 dark:text-neutral-100 font-light block mb-1">
+              {t("introduction.headingPrefix")}
+            </span>
+            <WordRotate
+              words={t("introduction.words")}
+              className="inline-block"
+            />
+          </h1>
+
+          <h2 className="text-base text-neutral-500 dark:text-neutral-400 leading-relaxed font-normal px-2">
+            {t("introduction.subheading")}
+          </h2>
+
+          <div className="pt-6 border-t border-neutral-200/10 dark:border-white/[0.04] flex flex-wrap items-center justify-center gap-5 max-w-xs mx-auto">
+            {techIcons.map((tech, i) => {
+              const IconComponent = tech.Icon;
+              return (
+                <div key={i} title={tech.name}>
+                  <IconComponent className="w-5 h-5 text-neutral-400 dark:text-neutral-600" />
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  // ─── DESKTOP SCROLL HERO ──────────────────────────────────────────────────
   return (
     <div ref={containerRef} className="relative w-full h-[200vh]">
-      {/* Sticky container that keeps the canvas and text in place while scrolling */}
       <div className="sticky top-0 w-full h-screen overflow-hidden pointer-events-none touch-pan-y flex flex-col items-center justify-center px-6 md:px-16 lg:px-24">
         
-        {/* Centered Scroll-animated Transparent 3D Molecule as background */}
         <motion.div 
           style={{ scale: canvasScale, opacity: canvasOpacity }}
           className="absolute inset-0 flex items-center justify-center -z-10 pointer-events-none"
@@ -68,7 +111,6 @@ export default function Introduction() {
           {mounted && <ScrollFrameVideo containerRef={containerRef} />}
         </motion.div>
 
-        {/* Foreground Content */}
         <motion.div
           style={{ opacity: textOpacity, scale: textScale, y: textY }}
           className="z-10 space-y-8 text-center flex flex-col items-center max-w-4xl mx-auto pointer-events-auto"
@@ -120,7 +162,6 @@ export default function Introduction() {
             </div>
           </BlurFade>
 
-          {/* Minimal static tech stack icons directly under the Hero CTA */}
           <BlurFade delay={0.6} inView>
             <div className="pt-8 mt-4 flex flex-wrap items-center justify-center gap-7 md:gap-9 border-t border-neutral-200/10 dark:border-white/[0.04] w-full max-w-md">
               {techIcons.map((tech, i) => {
@@ -135,7 +176,6 @@ export default function Introduction() {
           </BlurFade>
         </motion.div>
 
-        {/* Scroll indicator */}
         {mounted && (
           <motion.div
             style={{ opacity: scrollIndicatorOpacity }}
