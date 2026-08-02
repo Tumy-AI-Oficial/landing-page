@@ -60,8 +60,8 @@ export default function Footer() {
                             {t("footer.colLegal")}
                         </h4>
                         <nav className="flex flex-col items-center lg:items-start gap-2.5">
-                            <Link href="/#contact" className="text-sm text-neutral-500 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-colors">{t("footer.terms")}</Link>
-                            <Link href="/#contact" className="text-sm text-neutral-500 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-colors">{t("footer.privacy")}</Link>
+                            <Link href="/terms" className="text-sm text-neutral-500 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-colors">{t("footer.terms")}</Link>
+                            <Link href="/privacy" className="text-sm text-neutral-500 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-colors">{t("footer.privacy")}</Link>
                             <Link href="/cookies" className="text-sm text-neutral-500 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-colors">{t("footer.cookies")}</Link>
                         </nav>
                     </div>
@@ -91,9 +91,19 @@ export default function Footer() {
 
             {/* Bottom bar */}
             <div className="border-t border-neutral-100 dark:border-neutral-900 py-6 px-6 md:px-16 lg:px-24">
-                <p className="text-center text-xs text-neutral-400 dark:text-neutral-600">
-                    {year} &copy; Tumy.ai. {t("footer.rights")}
-                </p>
+                <div className="flex flex-col md:flex-row items-center justify-between gap-4 max-w-7xl mx-auto">
+                    <p className="text-center text-xs text-neutral-400 dark:text-neutral-600">
+                        {year} &copy; Tumy.ai. {t("footer.rights")}
+                    </p>
+                    <div className="flex items-center gap-6 text-xs text-neutral-400 dark:text-neutral-600 font-mono tracking-wide">
+                        <Link href="/privacy" className="hover:text-black dark:hover:text-white transition-colors">
+                            Privacidad
+                        </Link>
+                        <Link href="/terms" className="hover:text-black dark:hover:text-white transition-colors">
+                            Términos
+                        </Link>
+                    </div>
+                </div>
             </div>
         </footer>
     );
