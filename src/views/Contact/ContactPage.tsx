@@ -55,9 +55,10 @@ function ContactFormContent() {
         { duration: 3000 }
       );
       reset();
-    } catch {
-      toast.error(t("contact.formError"), {
-        duration: 3000,
+    } catch (error: any) {
+      const errorMessage = error.response?.data?.error || t("contact.formError");
+      toast.error(errorMessage, {
+        duration: 4000,
       });
     }
   };
