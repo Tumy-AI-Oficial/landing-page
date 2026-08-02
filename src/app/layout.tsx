@@ -84,7 +84,7 @@ export default function RootLayout({
         <meta name="theme-color" content="#ffffff" />
         <meta
           httpEquiv="Content-Security-Policy"
-          content="default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' blob: data: https://images.unsplash.com; font-src 'self' data:; object-src 'none'; upgrade-insecure-requests;"
+          content="default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https://www.google.com https://www.gstatic.com; frame-src 'self' https://www.google.com; style-src 'self' 'unsafe-inline'; img-src 'self' blob: data: https://images.unsplash.com; font-src 'self' data:; object-src 'none'; upgrade-insecure-requests;"
         />
         <script
           type="application/ld+json"

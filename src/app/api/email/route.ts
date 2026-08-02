@@ -12,11 +12,31 @@ const transporter = nodemailer.createTransport({
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { nombre, correo, mensaje } = body;
+    const { nombre, correo, mensaje, recaptchaToken } = body;
 
     if (!nombre || !correo || !mensaje) {
       return NextResponse.json(
         { error: "Todos los campos son requeridos" },
+        { status: 400 },
+      );
+    }
+
+    if (!recaptchaToken) {
+      return NextResponse.json(
+        { error: "Falta el token de seguridad reCAPTCHA" },
+        { status: 400 },
+      );
+    }
+
+    const secretKey = process.env.RECAPTCHA_SECRET_KEY;
+    const verifyUrl = `https://www.google.com/recaptcha/api/siteverify?secret=${secretKey}&response=${recaptchaToken}`;
+    
+    const recaptchaRes = await fetch(verifyUrl, { method: "POST" });
+    const recaptchaData = await recaptchaRes.json();
+
+    if (!recaptchaData.success || recaptchaData.score < 0.5) {
+      return NextResponse.json(
+        { error: "Validación de seguridad fallida (Bots no permitidos)" },
         { status: 400 },
       );
     }

@@ -2,7 +2,7 @@ import type { NextConfig } from "next";
 
 const cspHeader = `
   default-src 'self';
-  script-src 'self' 'unsafe-eval' 'unsafe-inline';
+  script-src 'self' 'unsafe-eval' 'unsafe-inline' https://www.google.com https://www.gstatic.com;
   style-src 'self' 'unsafe-inline';
   img-src 'self' blob: data: https://images.unsplash.com;
   font-src 'self' data:;
@@ -10,6 +10,7 @@ const cspHeader = `
   base-uri 'self';
   form-action 'self';
   frame-ancestors 'none';
+  frame-src 'self' https://www.google.com;
   upgrade-insecure-requests;
 `.replace(/\s{2,}/g, ' ').trim();
 

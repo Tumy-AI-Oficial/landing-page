@@ -9,6 +9,7 @@ import { FaTiktok, FaInstagram, FaWhatsapp, FaEnvelope, FaLinkedinIn } from "rea
 import { IconType } from "react-icons";
 import axios from "axios";
 import { useI18n } from "@/lib/i18n";
+import { GoogleReCaptchaProvider, useGoogleReCaptcha } from "react-google-recaptcha-v3";
 
 interface SocialMediaCardProps {
   icon: IconType;
@@ -30,8 +31,9 @@ const SocialMedias: SocialMediaCardProps[] = [
   { icon: FaLinkedinIn, username: "Tumy AI", url: "https://www.linkedin.com/in/tumy-ai-98164b41a/" },
 ];
 
-export default function ContactPage() {
+function ContactFormContent() {
   const { t } = useI18n();
+  const { executeRecaptcha } = useGoogleReCaptcha();
 
   const {
     register,
@@ -41,8 +43,13 @@ export default function ContactPage() {
   } = useForm<FormValues>();
 
   const onSubmit = async (data: FormValues) => {
+    if (!executeRecaptcha) {
+      toast.error("Validación de seguridad no lista. Intenta de nuevo.", { duration: 3000 });
+      return;
+    }
     try {
-      await axios.post("/api/email", data);
+      const recaptchaToken = await executeRecaptcha("contact_form");
+      await axios.post("/api/email", { ...data, recaptchaToken });
       toast.success(
         t("contact.formSuccess"),
         { duration: 3000 }
@@ -161,6 +168,13 @@ export default function ContactPage() {
                 >
                   {isSubmitting ? t("contact.formSubmitting") : t("contact.formSubmit")}
                 </ShimmerButton>
+                
+                <p className="text-[11px] text-neutral-400 dark:text-neutral-500 mt-4 text-center tracking-wide font-mono">
+                  Este sitio está protegido por reCAPTCHA y aplican la{" "}
+                  <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="underline hover:text-neutral-600 dark:hover:text-neutral-300 transition-colors">Política de Privacidad</a>
+                  {" "}y los{" "}
+                  <a href="https://policies.google.com/terms" target="_blank" rel="noopener noreferrer" className="underline hover:text-neutral-600 dark:hover:text-neutral-300 transition-colors">Términos de Servicio</a> de Google.
+                </p>
               </form>
             </div>
           </BlurFade>
@@ -202,5 +216,15 @@ export default function ContactPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function ContactPage() {
+  const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || "";
+  
+  return (
+    <GoogleReCaptchaProvider reCaptchaKey={siteKey}>
+      <ContactFormContent />
+    </GoogleReCaptchaProvider>
   );
 }
