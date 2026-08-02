@@ -12,25 +12,25 @@ const transporter = nodemailer.createTransport({
 const rateLimitMap = new Map<string, { count: number; lastReset: number }>();
 
 function checkRateLimit(ip: string): boolean {
-  const limit = 2; // Máximo 2 correos
-  const windowMs = 30 * 60 * 1000; // Cada 30 minutos
+  const limit = 1;
+  const windowMs = 10 * 60 * 1000; // Cada 10 minutos
   const now = Date.now();
   const windowData = rateLimitMap.get(ip);
-  
+
   if (!windowData) {
     rateLimitMap.set(ip, { count: 1, lastReset: now });
     return true;
   }
-  
+
   if (now - windowData.lastReset > windowMs) {
     rateLimitMap.set(ip, { count: 1, lastReset: now });
     return true;
   }
-  
+
   if (windowData.count >= limit) {
     return false;
   }
-  
+
   windowData.count += 1;
   return true;
 }
@@ -40,7 +40,10 @@ export async function POST(request: Request) {
     const ip = request.headers.get("x-forwarded-for") ?? "127.0.0.1";
     if (!checkRateLimit(ip)) {
       return NextResponse.json(
-        { error: "Has enviado demasiados mensajes. Por favor, intenta de nuevo en 30 minutos." },
+        {
+          error:
+            "Has enviado demasiados mensajes. Por favor, intenta de nuevo en 10 minutos.",
+        },
         { status: 429 },
       );
     }
@@ -64,7 +67,7 @@ export async function POST(request: Request) {
 
     const secretKey = process.env.RECAPTCHA_SECRET_KEY;
     const verifyUrl = `https://www.google.com/recaptcha/api/siteverify?secret=${secretKey}&response=${recaptchaToken}`;
-    
+
     const recaptchaRes = await fetch(verifyUrl, { method: "POST" });
     const recaptchaData = await recaptchaRes.json();
 
