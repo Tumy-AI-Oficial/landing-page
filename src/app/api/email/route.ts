@@ -76,6 +76,7 @@ export async function POST(request: Request) {
     }
 
     const fecha = new Date().toLocaleDateString("es-ES", {
+      timeZone: "America/Lima",
       day: "2-digit",
       month: "2-digit",
       year: "numeric",
