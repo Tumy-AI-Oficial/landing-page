@@ -261,7 +261,7 @@ export default function Navbar() {
                         alt="Logo"
                         width={32}
                         height={32}
-                        className={mounted && resolvedTheme === 'dark' ? 'invert' : ''}
+                        className="dark:invert"
                     />
                     <span className="text-base font-semibold tracking-tight">Tumy.ai</span>
                 </Link>

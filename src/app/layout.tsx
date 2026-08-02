@@ -12,6 +12,7 @@ import LiquidGlassBackground from "@/components/LiquidGlassBackground/LiquidGlas
 import ScrollProgress from "@/components/ScrollProgress/ScrollProgress";
 import { I18nProvider } from "@/lib/i18n";
 import CookieBanner from "@/components/CookieBanner/CookieBanner";
+import { WhatsAppButton } from "@/components/WhatsAppButton";
 
 export const metadata: Metadata = {
   title:
@@ -150,6 +151,7 @@ export default function RootLayout({
             <main>{children}</main>
             <Footer />
             <ScrollToTop />
+            <WhatsAppButton />
             <CookieBanner />
           </I18nProvider>
         </ThemeProvider>

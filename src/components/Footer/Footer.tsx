@@ -31,7 +31,7 @@ export default function Footer() {
                                     alt="Logo"
                                     width={28}
                                     height={28}
-                                    className={resolvedTheme === "dark" ? "invert" : ""}
+                                    className="dark:invert"
                                 />
                             )}
                             <span className="text-base font-semibold tracking-tight">Tumy.ai</span>
