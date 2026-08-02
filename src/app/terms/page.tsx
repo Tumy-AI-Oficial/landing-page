@@ -37,7 +37,7 @@ export default function TermsPage() {
 
             <section className="space-y-3">
               <h2 className="text-lg md:text-xl font-semibold text-black dark:text-white">3. Exención de responsabilidad</h2>
-              <p>Los materiales en el sitio web de Tumy.ai se proporcionan "tal cual". Tumy.ai no otorga ninguna garantía, expresa o implícita, y por la presente niega todas las demás garantías, incluidas, entre otras, las condiciones implícitas de comerciabilidad y adecuación para un propósito particular.</p>
+              <p>Los materiales en el sitio web de Tumy.ai se proporcionan &quot;tal cual&quot;. Tumy.ai no otorga ninguna garantía, expresa o implícita, y por la presente niega todas las demás garantías, incluidas, entre otras, las condiciones implícitas de comerciabilidad y adecuación para un propósito particular.</p>
             </section>
 
             <section className="space-y-3">

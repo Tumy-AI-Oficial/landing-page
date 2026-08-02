@@ -55,8 +55,11 @@ function ContactFormContent() {
         { duration: 3000 }
       );
       reset();
-    } catch (error: any) {
-      const errorMessage = error.response?.data?.error || t("contact.formError");
+    } catch (error: unknown) {
+      let errorMessage = t("contact.formError");
+      if (axios.isAxiosError(error) && error.response?.data?.error) {
+        errorMessage = error.response.data.error;
+      }
       toast.error(errorMessage, {
         duration: 4000,
       });
