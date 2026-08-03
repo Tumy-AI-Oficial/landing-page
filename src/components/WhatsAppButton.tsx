@@ -1,7 +1,9 @@
 'use client';
 import { FaWhatsapp } from 'react-icons/fa';
+import { useI18n } from '@/lib/i18n';
 
 export const WhatsAppButton = () => {
+    const { t } = useI18n();
     return (
         <a 
             href="https://wa.me/51908748904" 
@@ -15,7 +17,7 @@ export const WhatsAppButton = () => {
             hover:bg-green-500/10 hover:border-green-500/30 hover:text-green-600 dark:hover:text-green-400
             active:scale-95
             rounded-full transition-all duration-500 ease-out group"
-            aria-label="Chat con nosotros en WhatsApp"
+            aria-label={t("whatsapp.ariaLabel")}
         >
             <FaWhatsapp className="w-6 h-6 relative z-10" />
             
@@ -23,7 +25,7 @@ export const WhatsAppButton = () => {
             <span className="hidden md:block max-w-0 overflow-hidden whitespace-nowrap opacity-0 
             group-hover:max-w-xs group-hover:opacity-100 group-hover:ml-3 
             transition-all duration-500 ease-out font-medium text-sm">
-                Chat con nosotros
+                {t("whatsapp.text")}
             </span>
         </a>
     )

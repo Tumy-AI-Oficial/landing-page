@@ -43,9 +43,9 @@ export default function Footer() {
 
                     {/* Company */}
                     <div className="flex flex-col items-center lg:items-start gap-3">
-                        <h4 className="text-xs font-medium tracking-widest uppercase text-neutral-400 dark:text-neutral-500">
+                        <h3 className="text-xs font-medium tracking-widest uppercase text-neutral-400 dark:text-neutral-500">
                             {t("footer.colCompany")}
-                        </h4>
+                        </h3>
                         <nav className="flex flex-col items-center lg:items-start gap-2.5">
                             <Link href="/#about" className="text-sm text-neutral-500 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-colors">{t("navbar.about")}</Link>
                             <Link href="/#contact" className="text-sm text-neutral-500 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-colors">{t("navbar.contact")}</Link>
@@ -56,9 +56,9 @@ export default function Footer() {
 
                     {/* Legal */}
                     <div className="flex flex-col items-center lg:items-start gap-3">
-                        <h4 className="text-xs font-medium tracking-widest uppercase text-neutral-400 dark:text-neutral-500">
+                        <h3 className="text-xs font-medium tracking-widest uppercase text-neutral-400 dark:text-neutral-500">
                             {t("footer.colLegal")}
-                        </h4>
+                        </h3>
                         <nav className="flex flex-col items-center lg:items-start gap-2.5">
                             <Link href="/terms" className="text-sm text-neutral-500 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-colors">{t("footer.terms")}</Link>
                             <Link href="/privacy" className="text-sm text-neutral-500 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-colors">{t("footer.privacy")}</Link>
@@ -68,9 +68,9 @@ export default function Footer() {
 
                     {/* Social */}
                     <div className="flex flex-col items-center lg:items-start gap-3">
-                        <h4 className="text-xs font-medium tracking-widest uppercase text-neutral-400 dark:text-neutral-500">
+                        <h3 className="text-xs font-medium tracking-widest uppercase text-neutral-400 dark:text-neutral-500">
                             {t("footer.colSocial")}
-                        </h4>
+                        </h3>
                         <div className="flex items-center gap-4">
                             <Link href="https://wa.me/51908748904" target="_blank" rel="noopener noreferrer" title="WhatsApp" className="text-neutral-400 hover:text-black dark:hover:text-white transition-colors">
                                 <FaWhatsapp className="text-lg" />

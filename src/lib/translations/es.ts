@@ -213,5 +213,82 @@ export const es = {
     resetButton: "Restablecer preferencias de cookies",
     resetSuccess: "Preferencias restablecidas con éxito. Recargando la página...",
     backButton: "Volver al inicio"
+  },
+  termsPage: {
+    legalTag: "[ LEGAL ]",
+    title: "Términos de Servicio",
+    lastUpdated: "Última actualización: ",
+    sections: [
+      {
+        title: "1. Aceptación de los términos",
+        content: "Al acceder y utilizar el sitio web de Tumy.ai, usted acepta estar sujeto a estos Términos de Servicio y a todas las leyes y regulaciones aplicables. Si no está de acuerdo con alguno de estos términos, tiene prohibido usar o acceder a este sitio.",
+        list: []
+      },
+      {
+        title: "2. Uso de la licencia",
+        content: "Se concede permiso temporal para interactuar con los materiales en el sitio web de Tumy.ai solo para uso personal o para propósitos de evaluación corporativa. Bajo estos términos, usted no puede:",
+        list: [
+          "Modificar o copiar los materiales de diseño e identidad visual de manera íntegra.",
+          "Intentar descompilar o realizar ingeniería inversa de cualquier software contenido en el sitio web.",
+          "Eliminar derechos de autor u otras notaciones de propiedad."
+        ]
+      },
+      {
+        title: "3. Exención de responsabilidad",
+        content: "Los materiales en el sitio web de Tumy.ai se proporcionan \"tal cual\". Tumy.ai no otorga ninguna garantía, expresa o implícita, y por la presente niega todas las demás garantías, incluidas, entre otras, las condiciones implícitas de comerciabilidad y adecuación para un propósito particular.",
+        list: []
+      },
+      {
+        title: "4. Limitaciones",
+        content: "En ningún caso Tumy.ai será responsable de daños que surjan del uso o la imposibilidad de utilizar los materiales o servicios presentados en el sitio, incluso si Tumy.ai o un representante autorizado ha sido notificado de la posibilidad de tales daños.",
+        list: []
+      },
+      {
+        title: "5. Modificaciones de los términos",
+        content: "Tumy.ai puede revisar estos términos de servicio en cualquier momento sin previo aviso. Al utilizar este sitio web, usted acepta estar sujeto a la versión actual de estos Términos de Servicio.",
+        list: []
+      }
+    ]
+  },
+  privacyPage: {
+    legalTag: "[ LEGAL ]",
+    title: "Política de Privacidad",
+    lastUpdated: "Última actualización: ",
+    sections: [
+      {
+        title: "1. Información que recopilamos",
+        content: "En Tumy.ai, recopilamos información personal que usted nos proporciona voluntariamente, como su nombre, dirección de correo electrónico y detalles de su empresa al utilizar nuestro formulario de contacto o al solicitar nuestros servicios.",
+        list: []
+      },
+      {
+        title: "2. Uso de la información",
+        content: "Utilizamos la información recopilada para:",
+        list: [
+          "Proveer, operar y mantener nuestros servicios.",
+          "Mejorar y personalizar la experiencia del usuario.",
+          "Comprender y analizar cómo utiliza nuestra plataforma.",
+          "Comunicarnos con usted para servicio al cliente y fines promocionales."
+        ]
+      },
+      {
+        title: "3. Protección de datos",
+        content: "Implementamos una variedad de medidas de seguridad de alto nivel para mantener la seguridad de su información personal cuando realiza una solicitud o accede a nuestros servicios. No compartimos su información con terceros sin su consentimiento, excepto cuando sea requerido por la ley.",
+        list: []
+      },
+      {
+        title: "4. Servicios de terceros",
+        content: "Este sitio está protegido por Google reCAPTCHA para prevenir el spam y el abuso. El uso de reCAPTCHA está sujeto a la <a href=\"https://policies.google.com/privacy\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"underline hover:text-black dark:hover:text-white transition-colors\">Política de Privacidad</a> y los <a href=\"https://policies.google.com/terms\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"underline hover:text-black dark:hover:text-white transition-colors\">Términos de Servicio</a> de Google.",
+        list: []
+      },
+      {
+        title: "5. Contacto",
+        content: "Si tiene preguntas adicionales o necesita más información sobre nuestra Política de Privacidad, no dude en contactarnos a través de nuestro correo: <a href=\"mailto:tumy.ai.pe@gmail.com\" class=\"underline hover:text-black dark:hover:text-white transition-colors\">tumy.ai.pe@gmail.com</a>.",
+        list: []
+      }
+    ]
+  },
+  whatsapp: {
+    ariaLabel: "Chat con nosotros en WhatsApp",
+    text: "Chat con nosotros"
   }
 };

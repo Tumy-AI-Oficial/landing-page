@@ -15,10 +15,9 @@ import CookieBanner from "@/components/CookieBanner/CookieBanner";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 
 export const metadata: Metadata = {
-  title:
-    "Tumy.ai (Tumyai) | Soluciones de Inteligencia Artificial para Empresas",
+  title: "Tumy.ai | Soluciones de Inteligencia Artificial",
   description:
-    "Impulsa la innovación de tu empresa con Tumy.ai (Tumyai). Desarrollo de herramientas, automatización y soluciones de IA (Inteligencia Artificial) adaptadas a tus necesidades.",
+    "Impulsa la innovación de tu empresa con Tumy.ai. Desarrollo de herramientas, automatización y soluciones de Inteligencia Artificial adaptadas a tu medida.",
   keywords: [
     "Tumy.ai",
     "Tumyai",
@@ -39,26 +38,19 @@ export const metadata: Metadata = {
   publisher: "Tumy.ai",
   robots: "index, follow",
   metadataBase: new URL("https://tumy.ai"),
-  alternates: {
-    canonical: "https://tumy.ai",
-    languages: {
-      "es-ES": "https://tumy.ai",
-      "en-US": "https://tumy.ai",
-    },
-  },
   openGraph: {
     type: "website",
     locale: "es_ES",
     alternateLocale: ["en_US"],
     url: "https://tumy.ai",
     siteName: "Tumy.ai",
-    title: "Tumy.ai (Tumyai) | IA para Empresas",
+    title: "Tumy.ai | IA para Empresas",
     description:
       "Tumy.ai es tu socio estratégico en IA. Soluciones basadas en Inteligencia Artificial para automatizar procesos y transformar digitalmente tu empresa.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Tumy.ai (Tumyai) | IA para Empresas",
+    title: "Tumy.ai | IA para Empresas",
     description:
       "Soluciones basadas en IA para automatizar procesos, aumentar la eficiencia y transformar digitalmente tu empresa.",
   },

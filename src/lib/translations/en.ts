@@ -213,5 +213,82 @@ export const en = {
     resetButton: "Reset Cookie Preferences",
     resetSuccess: "Preferences reset successfully. Reloading page...",
     backButton: "Back to Home"
+  },
+  termsPage: {
+    legalTag: "[ LEGAL ]",
+    title: "Terms of Service",
+    lastUpdated: "Last updated: ",
+    sections: [
+      {
+        title: "1. Acceptance of terms",
+        content: "By accessing and using the Tumy.ai website, you agree to be bound by these Terms of Service and all applicable laws and regulations. If you do not agree with any of these terms, you are prohibited from using or accessing this site.",
+        list: []
+      },
+      {
+        title: "2. Use License",
+        content: "Permission is granted to temporarily interact with the materials on the Tumy.ai website for personal, non-commercial transitory viewing or corporate evaluation purposes only. Under this license you may not:",
+        list: [
+          "Modify or copy the design materials and visual identity entirely.",
+          "Attempt to decompile or reverse engineer any software contained on the website.",
+          "Remove any copyright or other proprietary notations from the materials."
+        ]
+      },
+      {
+        title: "3. Disclaimer",
+        content: "The materials on the Tumy.ai website are provided on an 'as is' basis. Tumy.ai makes no warranties, expressed or implied, and hereby disclaims and negates all other warranties including, without limitation, implied warranties or conditions of merchantability, fitness for a particular purpose.",
+        list: []
+      },
+      {
+        title: "4. Limitations",
+        content: "In no event shall Tumy.ai or its suppliers be liable for any damages arising out of the use or inability to use the materials or services on the site, even if Tumy.ai or an authorized representative has been notified orally or in writing of the possibility of such damage.",
+        list: []
+      },
+      {
+        title: "5. Revisions",
+        content: "Tumy.ai may revise these terms of service for its website at any time without notice. By using this website you are agreeing to be bound by the then current version of these Terms of Service.",
+        list: []
+      }
+    ]
+  },
+  privacyPage: {
+    legalTag: "[ LEGAL ]",
+    title: "Privacy Policy",
+    lastUpdated: "Last updated: ",
+    sections: [
+      {
+        title: "1. Information we collect",
+        content: "At Tumy.ai, we collect personal information that you voluntarily provide to us, such as your name, email address, and company details when using our contact form or requesting our services.",
+        list: []
+      },
+      {
+        title: "2. Use of information",
+        content: "We use the collected information to:",
+        list: [
+          "Provide, operate, and maintain our services.",
+          "Improve and personalize user experience.",
+          "Understand and analyze how you use our platform.",
+          "Communicate with you for customer service and promotional purposes."
+        ]
+      },
+      {
+        title: "3. Data protection",
+        content: "We implement a variety of high-level security measures to maintain the safety of your personal information when you place a request or access our services. We do not share your information with third parties without your consent, except when required by law.",
+        list: []
+      },
+      {
+        title: "4. Third-party services",
+        content: "This site is protected by Google reCAPTCHA to prevent spam and abuse. The use of reCAPTCHA is subject to the Google <a href=\"https://policies.google.com/privacy\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"underline hover:text-black dark:hover:text-white transition-colors\">Privacy Policy</a> and <a href=\"https://policies.google.com/terms\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"underline hover:text-black dark:hover:text-white transition-colors\">Terms of Service</a>.",
+        list: []
+      },
+      {
+        title: "5. Contact",
+        content: "If you have additional questions or require more information about our Privacy Policy, do not hesitate to contact us through our email: <a href=\"mailto:tumy.ai.pe@gmail.com\" class=\"underline hover:text-black dark:hover:text-white transition-colors\">tumy.ai.pe@gmail.com</a>.",
+        list: []
+      }
+    ]
+  },
+  whatsapp: {
+    ariaLabel: "Chat with us on WhatsApp",
+    text: "Chat with us"
   }
 };

@@ -89,9 +89,9 @@ export default function AboutSection() {
                         <Image src={value.icon3d} alt={title} fill className="object-contain mix-blend-multiply dark:mix-blend-screen dark:invert" />
                       </div>
                     </div>
-                    <h4 className="text-lg font-bold tracking-tight text-neutral-900 dark:text-neutral-100">
+                    <h3 className="text-lg font-bold tracking-tight text-neutral-900 dark:text-neutral-100">
                       {title}
-                    </h4>
+                    </h3>
                     <p className="text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed font-normal">
                       {description}
                     </p>
