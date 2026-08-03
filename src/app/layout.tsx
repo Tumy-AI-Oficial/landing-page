@@ -34,16 +34,16 @@ export const metadata: Metadata = {
     "Automatización",
     "Machine Learning",
   ],
-  authors: [{ name: "Tumy.ai", url: "https://tumy.ai" }],
+  authors: [{ name: "Tumy.ai", url: "https://tumyai.com" }],
   creator: "Tumy.ai",
   publisher: "Tumy.ai",
   robots: "index, follow",
-  metadataBase: new URL("https://tumy.ai"),
+  metadataBase: new URL("https://tumyai.com"),
   openGraph: {
     type: "website",
     locale: "es_ES",
     alternateLocale: ["en_US"],
-    url: "https://tumy.ai",
+    url: "https://tumyai.com",
     siteName: "Tumy.ai",
     title: "Tumy.ai | IA para Empresas",
     description:
@@ -58,7 +58,7 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { url: "/logos/icon.ico" },
-      new URL("/logos/icon.ico", "https://tumy.ai").href,
+      new URL("/logos/icon.ico", "https://tumyai.com").href,
     ],
     shortcut: "/logos/icon.ico",
     apple: "/logos/icon.ico",
@@ -115,8 +115,8 @@ export default function RootLayout({
                 "soluciones de inteligencia artificial",
                 "automatización de procesos",
               ],
-              url: "https://tumy.ai",
-              logo: "https://tumy.ai/logos/icon.ico",
+              url: "https://tumyai.com",
+              logo: "https://tumyai.com/logos/icon.ico",
               description:
                 "Tumy.ai (Tumyai) es una empresa especializada en soluciones empresariales de Inteligencia Artificial y automatización.",
               sameAs: [

@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: '*',
       allow: '/',
     },
-    sitemap: 'https://tumy.ai/sitemap.xml',
+    sitemap: 'https://tumyai.com/sitemap.xml',
   };
 }

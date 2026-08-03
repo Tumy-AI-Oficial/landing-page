@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://tumy.ai';
+  const baseUrl = 'https://tumyai.com';
   return [
     {
       url: baseUrl,
