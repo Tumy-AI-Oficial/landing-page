@@ -6,6 +6,13 @@ import Advantages from "@/views/Home/Advantages";
 import Team from "@/views/Home/Team";
 import ContactPage from "@/views/Contact/ContactPage";
 import CTA from "@/views/Home/CTA";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: "/",
+  },
+};
 
 export default function Home() {
   return (

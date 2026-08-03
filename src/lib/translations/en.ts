@@ -206,7 +206,8 @@ export const en = {
     cookiesList: [
       { name: "lang / NEXT_LOCALE", purpose: "Stores your selected language preference (Spanish or English).", duration: "1 year" },
       { name: "cookie-consent", purpose: "Stores your decision regarding the acceptance or rejection of our cookie policy.", duration: "1 year" },
-      { name: "theme", purpose: "Stores your preference for the interface's visual theme (Light or Dark).", duration: "Persistent" }
+      { name: "theme", purpose: "Stores your preference for the interface's visual theme (Light or Dark).", duration: "Persistent" },
+      { name: "_ga, _ga_*", purpose: "Google Analytics: Tracks anonymous usage statistics, visits, and behavior to improve the service.", duration: "Up to 2 years" }
     ],
     manageTitle: "Manage Your Preferences",
     manageDesc: "You can reset your cookie settings at any time using the button below. This will clear your records and make the consent banner reappear.",

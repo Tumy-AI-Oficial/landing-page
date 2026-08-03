@@ -206,7 +206,8 @@ export const es = {
     cookiesList: [
       { name: "lang / NEXT_LOCALE", purpose: "Almacena tu preferencia de idioma seleccionado (Español o Inglés).", duration: "1 año" },
       { name: "cookie-consent", purpose: "Almacena tu decisión sobre la aceptación o rechazo de nuestra política de cookies.", duration: "1 año" },
-      { name: "theme", purpose: "Almacena tu preferencia del tema visual de la interfaz (Claro u Oscuro).", duration: "Persistente" }
+      { name: "theme", purpose: "Almacena tu preferencia del tema visual de la interfaz (Claro u Oscuro).", duration: "Persistente" },
+      { name: "_ga, _ga_*", purpose: "Google Analytics: Rastrea de forma anónima estadísticas de visitas y comportamiento para mejorar el servicio.", duration: "Hasta 2 años" }
     ],
     manageTitle: "Administrar tus preferencias",
     manageDesc: "Puedes restablecer tu configuración de cookies en cualquier momento utilizando el siguiente botón. Esto limpiará tus registros y hará aparecer el banner de consentimiento de nuevo.",

@@ -13,6 +13,7 @@ import ScrollProgress from "@/components/ScrollProgress/ScrollProgress";
 import { I18nProvider } from "@/lib/i18n";
 import CookieBanner from "@/components/CookieBanner/CookieBanner";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
+import ClientAnalytics from "@/components/ClientAnalytics";
 
 export const metadata: Metadata = {
   title: "Tumy.ai | Soluciones de Inteligencia Artificial",
@@ -55,8 +56,12 @@ export const metadata: Metadata = {
       "Soluciones basadas en IA para automatizar procesos, aumentar la eficiencia y transformar digitalmente tu empresa.",
   },
   icons: {
-    icon: "/logos/icon.ico",
+    icon: [
+      { url: "/logos/icon.ico" },
+      new URL("/logos/icon.ico", "https://tumy.ai").href,
+    ],
     shortcut: "/logos/icon.ico",
+    apple: "/logos/icon.ico",
   },
 };
 
@@ -147,6 +152,7 @@ export default function RootLayout({
             <CookieBanner />
           </I18nProvider>
         </ThemeProvider>
+        <ClientAnalytics />
       </body>
     </html>
   );
